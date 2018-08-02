@@ -51,6 +51,7 @@
     <Compile Include="Product\Products.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Product\Radios.cs" />
+    <Compile Include="Transaction\Transaction.cs" />
     <Compile Include="Validator.cs" />
   </ItemGroup>
   <ItemGroup />

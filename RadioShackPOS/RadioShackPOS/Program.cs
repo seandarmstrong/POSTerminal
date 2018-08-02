@@ -9,13 +9,16 @@ namespace RadioShackPOS
         static void Main(string[] args)
         {
             ////////// TESTING - MIKE ///////////////////////
-            System.Console.WriteLine("put in some test input");
-            var answer = Console.ReadLine();
+            //System.Console.WriteLine("put in some test input");
+            //var answer = Console.ReadLine();
             var validator = new Validator();
-            if (validator.ValidExpDate(answer))
-            {
-                Console.WriteLine("valid");
-            }
+            var transaction = new POS.Library.Transaction.Transaction();
+            var change = transaction.CashTransaction();
+            Console.WriteLine(change);
+            //if (validator.ValidCVV(answer))
+            //{
+            //    Console.WriteLine("valid");
+            //}
             ///////////////////////////////////////////////
 
 

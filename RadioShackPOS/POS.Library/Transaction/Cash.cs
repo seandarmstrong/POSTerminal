@@ -10,13 +10,14 @@ namespace POS.Library
             _tender = tender;
         }
 
-        private float _total { get; set; }
-        private float _tender { get; set; }
-        private float Change { get; set; }
+        private static float _total { get; set; }
+        private static float _tender { get; set; }
+        private static float Change { get; set; }
 
         public static float MakeChange()
         {
-            throw new NotImplementedException();
+            var change = _total - _tender;
+            return change;
         }
     }
 }
