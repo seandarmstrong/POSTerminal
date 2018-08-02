@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace POS.Library
+﻿namespace POS.Library
 {
-    class Cables
+    public class Cables : Products
     {
+        public Cables(string name, float price, string description) : base("Cables", name, price, description)
+        {
+
+        }
     }
 }
