@@ -8,6 +8,7 @@ namespace RadioShackPOS
     {
         static void Main(string[] args)
         {
+            ////////// TESTING - MIKE ///////////////////////
             System.Console.WriteLine("put in some test input");
             var answer = Console.ReadLine();
             var validator = new Validator();
@@ -15,7 +16,7 @@ namespace RadioShackPOS
             {
                 Console.WriteLine("valid");
             }
-
+            ///////////////////////////////////////////////
 
 
             Console.ReadKey();
