@@ -14,20 +14,14 @@ namespace POS.Library
                 "2. Check out",
                 "3. Leave store");
             Console.WriteLine(menu);
-            var userInput = int.Parse(Console.ReadLine()); //add validation for integer check and/or exception handling
-
-            switch (userInput)
-            {
-                case 1:
-                    DisplayProductMenu();
-                    break;
-
-            }
-
+            UserOptions.MainMenueOptions();
         }
 
         public static void DisplayProductMenu()
         {
+            
+            Console.WriteLine(Order.product);
+
             //delete
             StreamReader readProducts = new StreamReader(@"C: \Users\frees\source\repos\POSTerminal\RadioShackPOS\POS.Library\products.txt");
             while (true)
@@ -39,6 +33,7 @@ namespace POS.Library
                 }
                 Console.WriteLine(line);
                 Console.ReadLine();
+
             }
         }
 

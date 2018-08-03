@@ -5,9 +5,9 @@ namespace POS.Library
 {
     public class ProductList
     {
-        public List<Product> productList = new List<Product>();
+        public  List<Product> productList = new List<Product>();
 
-        public List<Product> BuildList()
+        public  List<Product> BuildList()
         {
             string[] str = System.IO.File.ReadAllText(@"C:\Users\armst\Documents\Grand_Circus\POS_Terminal\POSTerminal\RadioShackPOS\POS.Library\products.txt")
                 .Split(new string[] { Environment.NewLine },
