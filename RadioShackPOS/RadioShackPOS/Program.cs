@@ -9,19 +9,13 @@ namespace RadioShackPOS
         {
             Console.ForegroundColor = ConsoleColor.White;
             ////////// TESTING - MIKE ///////////////////////
-            //System.Console.WriteLine("put in some test input");
-            //var answer = Console.ReadLine();
-            var validator = new Validator();
-            var transaction = new POS.Library.Transaction.Transaction();
-            //var change = transaction.CashTransaction();
+            //var transaction = new POS.Library.Transaction.Transaction();
             //transaction.CCTransaction();
-
-
-            //if (validator.ValidCVV(answer))
-            //{
-            //    Console.WriteLine("valid");
-            //}
-            ///////////////////////////////////////////////
+            //var cash = new POS.Library.Cash();
+            //var cashTransaction = cash.CashTransaction();
+            var creditCard = new POS.Library.CreditCard();
+            var ccTransaction = creditCard.CCTransaction();
+            Console.WriteLine(ccTransaction);
 
 
             Console.ReadKey();
