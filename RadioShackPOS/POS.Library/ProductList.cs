@@ -7,9 +7,9 @@ namespace POS.Library
 {
     public class ProductList
     {
-        public List<Product> productList = new List<Product>();
+        public  List<Product> productList = new List<Product>();
 
-        public List<Product> BuildList()
+        public  List<Product> BuildList()
         {
             string[] fields;
 
