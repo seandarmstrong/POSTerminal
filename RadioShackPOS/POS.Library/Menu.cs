@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using POS.Library;
 using System.IO;
 
 namespace POS.Library
@@ -12,14 +7,14 @@ namespace POS.Library
     {
         public static void DisplayMainMenu()
         {
-            
+
             var menu = String.Format("{0}\n{1}\n{2}\n{3}",
                 "What would you like to do?",
-                "1. View wares",
+                "1. View products",
                 "2. Check out",
                 "3. Leave store");
             Console.WriteLine(menu);
-            var userInput = int.Parse(Console.ReadLine());
+            var userInput = int.Parse(Console.ReadLine()); //add validation for integer check and/or exception handling
 
             switch (userInput)
             {
@@ -33,14 +28,15 @@ namespace POS.Library
 
         public static void DisplayProductMenu()
         {
+            //delete
             StreamReader readProducts = new StreamReader(@"C: \Users\frees\source\repos\POSTerminal\RadioShackPOS\POS.Library\products.txt");
             while (true)
             {
                 string line = readProducts.ReadLine();
                 if (line == null)
-                    {
+                {
                     break;
-                    }
+                }
                 Console.WriteLine(line);
                 Console.ReadLine();
             }
