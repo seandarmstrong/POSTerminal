@@ -14,12 +14,12 @@ namespace POS.Library
                 "2. Check out",
                 "3. Leave store");
             Console.WriteLine(menu);
-            UserOptions.MainMenueOptions();
+            UserOptions.GetMainMenuResponse();
         }
 
         public static void DisplayProductMenu()
         {
-            
+
             Console.WriteLine(Order.product);
 
             //delete
