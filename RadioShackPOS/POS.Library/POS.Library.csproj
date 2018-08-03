@@ -47,7 +47,6 @@
     <Compile Include="Transactions\Cash.cs" />
     <Compile Include="Transactions\Check.cs" />
     <Compile Include="Transactions\CreditCard.cs" />
-    <Compile Include="Transactions\Transaction.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Product\Phone.cs" />
