@@ -1,33 +1,62 @@
-﻿namespace POS.Library
-{
-    public class CreditCard
-    {
-        public CreditCard(float total, string creditCardNumber, string expDate, string cVV)
-        {
-            _total = total;
-            _creditCardNumber = creditCardNumber;
-            _expDate = expDate;
-            _cVV = cVV;
-        }
+﻿using System;
 
-        private float _total { set; get; }
+namespace POS.Library
+{
+    public class CreditCard : Transaction.Transaction
+    {
+        Validator validator = new Validator();
+
+        public CreditCard()
+        {
+        }
         private static string _creditCardNumber { get; set; }
         private static string _expDate { get; set; }
         private static string _cVV { get; set; }
 
-        public static string GetCreditCardNumber()
+        public string CCTransaction()
         {
-            return _creditCardNumber;
+
+            AskForCCNumber();
+            AskForExpDate();
+            AskForCVV();
+            Console.ForegroundColor = ConsoleColor.Green;
+            return "Your purchase has been completed!";
+
+
         }
 
-        public static string GetExpDate()
+        public void AskForCCNumber()
         {
-            return _expDate;
+            Console.Write("Please enter your credit card number ('1234123412341234 or 1234 1234 1234 1234'): ");
+            var ccNumber = Console.ReadLine();
+            if (!validator.ValidCCNumber(ccNumber))
+            {
+                Console.WriteLine("Please enter a valid credit card number");
+                AskForCCNumber();
+            }
+            
         }
 
-        public static string GetCVVNumber()
+        public void AskForExpDate()
         {
-            return _cVV;
+            Console.Write("Please enter the expiration date (MM/YYYY): ");
+            var expirationDate = Console.ReadLine();
+            if (!validator.ValidExpDate(expirationDate))
+            {
+                Console.WriteLine("Please enter a valid expiration date");
+                CCTransaction();
+            }
+        }
+
+        public void AskForCVV()
+        {
+            Console.Write("Please enter the 3 digit code on the back of your card: ");
+            var cvvNumber = Console.ReadLine();
+            if (!validator.ValidCVV(cvvNumber))
+            {
+                Console.WriteLine("Please enter a valid CVV (3 digit code at the end of the signature line");
+                CCTransaction();
+            }
         }
     }
 }
