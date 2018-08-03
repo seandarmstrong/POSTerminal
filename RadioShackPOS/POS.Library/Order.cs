@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace POS.Library
 {
@@ -9,15 +8,22 @@ namespace POS.Library
         private float _salesTax = .06f;
         private float _grandTotal { get; set; }
 
-        public void CheckList()
-        {
-            var product = new ProductList();
-            List<Product> productList = product.BuildList();
+        public List<Product> orderList = new List<Product>();
+        public static ProductList product = new ProductList();
+        public List<Product> productList = product.BuildList();
 
-            foreach (var i in productList)
+        public List<Product> BuildOrderList(int userInput)
+        {
+            var productIndex = userInput - 1;
+            foreach (var product in productList)
             {
-                Console.WriteLine(i.ReturnName());
+                if (productList.IndexOf(product) == productIndex)
+                {
+                    orderList.Add(new Product(product.ReturnCategory(), product.ReturnName(), product.ReturnPrice(), product.ReturnDescription()));
+                }
             }
+
+            return orderList;
         }
     }
 }
