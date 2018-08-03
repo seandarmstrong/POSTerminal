@@ -1,8 +1,8 @@
 ﻿namespace POS.Library
 {
-    public class Products
+    public class Product
     {
-        public Products(string category, string name, float price, string description)
+        public Product(string category, string name, float price, string description)
         {
             _category = category;
             _name = name;
