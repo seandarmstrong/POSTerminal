@@ -8,8 +8,11 @@ namespace POS.Library.Transaction
 {
     public class Transaction
     {
+        ////////////////////////////////////////////////////////////////////////
+        // THE TRANSACTIONS ARE IN THEIR OWN CLASSES AND DO NOT NEED INHERITANCE?
+        ////////////////////////////////////////////////////////////////////////
         // Shared
-        private static float _total = 100.00f;
+        private static float _total { get; set; }
         // For cash
         private static float _tender { get; set; }
         // For CC
@@ -21,7 +24,7 @@ namespace POS.Library.Transaction
         // For Check
         private static int _checkNumber { get; set; }
         // Validation methods for transactions
-        Validator validator = new Validator();
+        //Validator validator = new Validator();
         // ctor
         public Transaction()
         {
@@ -106,13 +109,6 @@ namespace POS.Library.Transaction
         ///////////////////////////////////////////////////
         //////////// CHECK TRANSACTION ////////////////////
         ///////////////////////////////////////////////////
-
-        // method to handle Check transactions
-        public string CheckTransaction()
-        {
-            throw new NotImplementedException();
-        }
-
 
     }
 }
