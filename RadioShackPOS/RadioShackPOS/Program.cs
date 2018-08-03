@@ -1,5 +1,5 @@
-﻿using System;
-using POS.Library;
+﻿using POS.Library;
+using System;
 
 namespace RadioShackPOS
 {
@@ -33,6 +33,7 @@ namespace RadioShackPOS
             //Console.WriteLine(checkTransaction);
             //Console.ReadKey();
             /////////////// END TESTING //////////////////////////
+
         }
     }
 }
