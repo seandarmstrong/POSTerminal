@@ -10,9 +10,9 @@
             _description = description;
         }
 
-        private string _category { get; set; }
-        private string _name { get; set; }
-        private float _price { get; set; }
-        private string _description { get; set; }
+        public string _category { get; set; }
+        public string _name { get; set; }
+        public float _price { get; set; }
+        public string _description { get; set; }
     }
 }

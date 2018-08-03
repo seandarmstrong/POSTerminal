@@ -1,6 +1,5 @@
-﻿using System;
-using POS.Library;
-using System.Text.RegularExpressions;
+﻿using POS.Library;
+using System;
 
 namespace RadioShackPOS
 {
@@ -15,8 +14,9 @@ namespace RadioShackPOS
             var validator = new Validator();
             var transaction = new POS.Library.Transaction.Transaction();
             //var change = transaction.CashTransaction();
-            transaction.CCTransaction();
-            
+            //transaction.CCTransaction();
+
+
             //if (validator.ValidCVV(answer))
             //{
             //    Console.WriteLine("valid");
