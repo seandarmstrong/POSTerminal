@@ -12,7 +12,8 @@ namespace POS.Library
         private static float _total = 100.00f;
         private static float _tender { get; set; }
         private static float Change { get; set; }
-        // handle making change for the customer
+
+        //handle making change for the customer
         public static string MakeChange()
         {
             return (_tender - _total).ToString("c2");

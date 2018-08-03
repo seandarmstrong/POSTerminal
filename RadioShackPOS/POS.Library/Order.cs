@@ -12,6 +12,7 @@ namespace POS.Library
         public static ProductList product = new ProductList();
         public List<Product> productList = product.BuildList();
 
+
         public List<Product> BuildOrderList(int userInput)
         {
             var productIndex = userInput - 1;
