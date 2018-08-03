@@ -41,17 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Product\Cables.cs" />
-    <Compile Include="Product\CarAccessories.cs" />
+    <Compile Include="ProductList.cs" />
+    <Compile Include="Product\Cable.cs" />
+    <Compile Include="Product\CarAccessory.cs" />
     <Compile Include="Transaction\Cash.cs" />
     <Compile Include="Transaction\Check.cs" />
     <Compile Include="Transaction\CreditCard.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Order.cs" />
-    <Compile Include="Product\Phones.cs" />
-    <Compile Include="Product\Products.cs" />
+    <Compile Include="Product\Phone.cs" />
+    <Compile Include="Product\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Product\Radios.cs" />
+    <Compile Include="Product\Radio.cs" />
+    <Compile Include="Transaction\Transaction.cs" />
     <Compile Include="Validator.cs" />
   </ItemGroup>
   <ItemGroup />

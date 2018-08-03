@@ -1,12 +1,12 @@
-cables,Cat5 network cable,10.99,20 feet of cat5 network cable
-cables,VGA mMonitor Cable,5.99,3 foot vga monitor cable
-cables,usb-c,15.99,6 foot usb-c cable
-phones,Apple iPhone x,899.00,the latest and greatest paper weight
-phones,wireless home phone,49.75,wireless home range with 4 foot range
-phones,rotary phone,19.95,just as you remember it
-radios,am radio,24.99,am radio for the best in talk radio
-radios,fm radio,27.50,fm radio for actual music
-radios,am/fm radio,6.99,the best of both worlds
-car accessories,tape deck adapter,4.99,listen to your iPhone through tape deck
-car accessories,big antenna,59.99,intercept the phone calls of other drivers
-car accessories,gps suction cup,15.75,gps suction cup-because its the 90s
+Cables,CAT5 Network Cable,10.99,20-foot spool of CAT5 network cable
+Cables,VGA Monitor Cable,5.99,3-foot VGA monitor cable
+Cables,USB-c,15.99,6-foot USB-c cable
+Phones,Apple iPhone X,899.00,The cutting edge technology of 1985
+Phones,Wireless hHome Phone,49.75,Wireless home phone with 4-foot range
+Phones,Rotary Phone,19.95,just as you remember it
+Radios,AM Radio,24.99,AM radio for the best in talk radio
+Radios,FM Radio,27.50,FM radio for actual music
+Radios,AM/FM Radio,6.99,the best of both worlds
+Car Accessories,Tape Deck Adapter,4.99,listen to your iPhone through tape deck
+Car Accessories,Big Antenna,59.99,intercept the phone calls of other drivers
+Car Accessories,GPS Suction Cup,15.75,GPS suction cup-because its the 90s

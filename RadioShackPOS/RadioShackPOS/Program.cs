@@ -1,9 +1,5 @@
 ﻿using System;
 using POS.Library;
-<<<<<<< HEAD
-=======
-using System.Text.RegularExpressions;
->>>>>>> d7a2bcb5aa239343c717da7c627317e00d454725
 
 namespace RadioShackPOS
 {
@@ -11,11 +7,8 @@ namespace RadioShackPOS
     {
         static void Main(string[] args)
         {
-<<<<<<< HEAD
             System.Console.WriteLine("Welcome to Radioshack");
             Menu.DisplayMainMenu();
-            
-=======
             System.Console.WriteLine("put in some test input");
             var answer = Console.ReadLine();
             var validator = new Validator();
@@ -23,11 +16,23 @@ namespace RadioShackPOS
             {
                 Console.WriteLine("valid");
             }
-
-
-
             Console.ReadKey();
->>>>>>> d7a2bcb5aa239343c717da7c627317e00d454725
+            Console.ForegroundColor = ConsoleColor.White;
+            ////////// TESTING - MIKE ///////////////////////////
+            // CASH METHOD IS HERE IF YOU WANT TO TEST IT
+            //var cash = new Cash();
+            //var cashTransaction = cash.Transaction();
+            //Console.WriteLine(cashTransaction);
+            // CREDIT CARD METHOD IS HERE IF YOU WANT TO TEST IT
+            //var creditCard = new CreditCard();
+            //var ccTransaction = creditCard.Transaction();
+            //Console.WriteLine(ccTransaction);
+            // CHECK METHOD IS HERE IF YOU WANT TO TEST IT
+            //var check = new Check();
+            //var checkTransaction = check.Transaction();
+            //Console.WriteLine(checkTransaction);
+            //Console.ReadKey();
+            /////////////// END TESTING //////////////////////////
         }
     }
 }
