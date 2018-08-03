@@ -2,7 +2,7 @@
 
 namespace POS.Library
 {
-    public class Cash : Transaction.Transaction
+    public class Cash
     {
         // omgoodness...it's a validator
         Validator validator = new Validator();
