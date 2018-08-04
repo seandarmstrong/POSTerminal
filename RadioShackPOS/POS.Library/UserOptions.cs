@@ -14,6 +14,7 @@ namespace POS.Library
                 case 1:
                     Menu.DisplayProductMenu();
                     Order.BuildOrderList(GetProductResponse());
+                    
                     break;
 
                 case 2:
