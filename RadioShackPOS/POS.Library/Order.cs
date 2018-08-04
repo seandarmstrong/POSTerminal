@@ -6,6 +6,8 @@ namespace POS.Library
 {
     public class Order
     {
+        private const string LIST_FORMAT = "{0, -4}{1, -20}{2, -25}{3, -10}{4,-5}";
+
         private float _subTotal { get; set; }
         private float _salesTax = .06f;
         private float _grandTotal { get; set; }
@@ -32,13 +34,14 @@ namespace POS.Library
         public static void ViewOrderCart()
         {
             var subTotal = 0f;
+            Console.WriteLine(LIST_FORMAT, "", "Category", "Name", "Price", "Description");
             foreach (var product in orderList)
             {
-                Console.WriteLine("{0,-5}{1,-10}{2,-10}{3,-6}{4,-20}", (orderList.IndexOf(product) + 1), product.Category, product.Name, product.Price, product.Description);
+                Console.WriteLine(LIST_FORMAT, (orderList.IndexOf(product) + 1), product.Category, product.Name, product.Price, product.Description);
                 subTotal = subTotal + product.Price;
             }
 
-            Console.WriteLine($"The current subtotal of the items in the cart is {subTotal}");
+            Console.WriteLine($"\nThe current subtotal of the items in the cart is {subTotal}.\n");
             Console.WriteLine("Press any key to return to main menu.");
             Console.ReadKey();
         }

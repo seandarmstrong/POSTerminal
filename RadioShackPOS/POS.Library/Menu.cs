@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
+using POS.Library.Interfaces;
 
 namespace POS.Library
 {
@@ -11,7 +12,7 @@ namespace POS.Library
         public static void DisplayMainMenu()
         {
 
-            var menu = String.Format("{0}\n{1}\n{2}\n{3}",
+            var menu = String.Format("\n{0}\n{1}\n{2}\n{3}",
                 "What would you like to do?",
                 "1. View products",
                 "2. View Cart",
@@ -25,21 +26,20 @@ namespace POS.Library
         {
 
             var menu = new ProductList();
-            List<Product> productList = menu.BuildList();
-                Console.WriteLine(LIST_FORMAT, "", "Category", "Name",  "Price", "Description");
+            List<IProductModel> productList = menu.BuildList();
+            Console.WriteLine(LIST_FORMAT, "", "Category", "Name",  "Price", "Description");
             Console.WriteLine("");
                
             foreach (var item in productList)
             {
-                Console.WriteLine(LIST_FORMAT, (productList.IndexOf(item) + 1), item.ReturnCategory(), item.ReturnName(), item.ReturnPrice(), item.ReturnDescription() );
+                Console.WriteLine(LIST_FORMAT, (productList.IndexOf(item) + 1), item.Category, item.Name, item.Price, item.Description );
             }
         }
 
         public static void DisplayCart()
         {
-            var cart = new Order();
             int i = 0;
-            List<Product> cartList = cart.BuildOrderList(i);
+            List<IProductModel> cartList = Order.BuildOrderList(i);
             for (i=0; i<cartList.Count; i++)
             {
                 Console.WriteLine(cartList);

@@ -13,17 +13,21 @@ namespace POS.Library
             {
                 case 1:
                     Menu.DisplayProductMenu();
-                    Order.BuildOrderList(GetProductResponse());
-                    
+                    do
+                    {
+                        Order.BuildOrderList(GetProductResponse());
+                        Console.Write("Would you like to add another product to the cart?(y/n): ");
+                    } while (AddAnother(Console.ReadLine().Trim().ToLower()));
                     break;
 
                 case 2:
 
-                    Menu.DisplayCart();
+                    Order.ViewOrderCart();
                     break;
 
                 case 3:
-                    Menu.DisplayPaymentMethods();
+                    //Menu.DisplayPaymentMethods();
+                    Console.WriteLine("Payment options will go here");
                     break;
                 case 4:
                     Console.WriteLine("Goodbye");
@@ -38,6 +42,25 @@ namespace POS.Library
         {
             Console.Write("Enter the product number that you would like to add to the order: ");
             return Convert.ToInt32(Console.ReadLine().Trim());
+        }
+
+        public static bool AddAnother(string input)
+        {
+            if (input == "yes" || input == "y")
+            {
+                return true;
+            }
+            else if (input == "no" || input == "n")
+            {
+                return false;
+            }
+            else
+            {
+                {
+                    Console.WriteLine("That is not a valid response. Please try again.");
+                    return AddAnother(Console.ReadLine().ToLower().Trim());
+                }
+            }
         }
     }
 }
