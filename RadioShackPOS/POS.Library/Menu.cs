@@ -45,5 +45,16 @@ namespace POS.Library
                 Console.WriteLine(cartList);
             }
         }
+        public static void DisplayPayment()
+        {
+            var menu = String.Format("\n{0}\n{1}\n{2}",
+                "How would you like to pay?",
+                "1. Cash",
+                "2. Check",
+                "3. Card");
+            Console.WriteLine(menu);
+            UserOptions.GetPaymentOptions();
+
+        }
     }
 }

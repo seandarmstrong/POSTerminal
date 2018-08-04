@@ -62,5 +62,14 @@ namespace POS.Library
                 }
             }
         }
+        public static void GetPaymentOptions()
+        {
+            var userInput = int.Parse(Console.ReadLine());
+            switch(userInput)
+            {
+
+            }
+
+        }
     }
 }
