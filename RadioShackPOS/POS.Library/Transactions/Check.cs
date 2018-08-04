@@ -1,12 +1,15 @@
 ﻿using System;
 using POS.Library.Transactions;
+using POS.Library.Models;
 
 namespace POS.Library
 {
-    public class Check : ITransactionModel
+    public class Check : ICheckModel
     {
-
+        
         public float Total { get; set; }
+        public string CheckNumber { get; private set; }
+
         Validator Validator = new Validator();
         // ctor
         public Check(float total)
@@ -16,22 +19,27 @@ namespace POS.Library
 
         public void Transaction(float total)
         {
+            // prompt  user for check number
+            GetCheckNumber(total);
+            // fancy pants success color and message
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Your check #{ CheckNumber } has been processed!");
+        }
+
+        public string GetCheckNumber(float total)
+        {
             // ask for and store user checknumber
             Console.WriteLine("Please enter a check number (0000): ");
-            var checkNumber = Console.ReadLine();
+            CheckNumber = Console.ReadLine();
             // validate user input
-            if (!Validator.ValidCheckNumber(checkNumber))
+            if (!Validator.ValidCheckNumber(CheckNumber))
             {
                 // call the method recursively if user input is invalid
                 Console.WriteLine("Please enter a valid check number in the form of 4 numbers (1234)");
-                Transaction(total);
+                GetCheckNumber(total);
             }
-            // fancy pants success color and message
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"Your check #{ checkNumber } has been processed!");
+            return CheckNumber;
         }
-
-        
     }
 
 }
