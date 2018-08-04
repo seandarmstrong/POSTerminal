@@ -60,8 +60,8 @@ namespace POS.Library
                 subTotal = subTotal + product.Price;
                 
             }
-
-            Console.WriteLine($"\n Your total price for this transaction will be {grandTotal}\n");
+            
+            Console.WriteLine($"\n The sales tax on this purchase is {taxOnSale}. Your total price for this transaction will be {grandTotal}.\n");
             return grandTotal;
         }
     }
