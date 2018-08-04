@@ -20,7 +20,7 @@ namespace POS.Library
                     break;
 
                 case 2:
-                    //Checkout();
+                    Menu.DisplayCart();
                     break;
 
                 case 3:

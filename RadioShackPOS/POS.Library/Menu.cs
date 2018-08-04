@@ -34,9 +34,15 @@ namespace POS.Library
             }
         }
 
-        public static void DisplayPaymentMethods()
+        public static void DisplayCart()
         {
-
+            var cart = new Order();
+            int i = 0;
+            List<Product> cartList = cart.BuildOrderList(i);
+            for (i=0; i<cartList.Count; i++)
+            {
+                Console.WriteLine(cartList);
+            }
         }
     }
 }
