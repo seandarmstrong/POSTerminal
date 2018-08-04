@@ -45,7 +45,7 @@ namespace POS.Library
         public string AskForExpDate()
         {
             // ask for and store user input
-            Console.Write("Please enter the expiration date (MM/YYYY): ");
+            Console.Write("Please enter the expiration date (MM/YY): ");
             ExpirationDate = Console.ReadLine();
             // if input is invalid display error
             // and call the method recursively
