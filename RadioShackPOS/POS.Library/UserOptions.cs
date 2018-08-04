@@ -26,8 +26,8 @@ namespace POS.Library
                     break;
 
                 case 3:
-                    //Menu.DisplayPaymentMethods();
-                    Console.WriteLine("Payment options will go here");
+                    Menu.DisplayPayment();
+                    //Console.WriteLine("Payment options will go here");
                     break;
                 case 4:
                     Console.WriteLine("Goodbye");
@@ -67,7 +67,13 @@ namespace POS.Library
             var userInput = int.Parse(Console.ReadLine());
             switch(userInput)
             {
-
+                case 1:
+                    var grandTotal = Order.CheckoutDisplay();
+                    var cash = new Cash();
+                    cash.Transaction(grandTotal);
+                    break;
+                default:
+                    break;
             }
 
         }
