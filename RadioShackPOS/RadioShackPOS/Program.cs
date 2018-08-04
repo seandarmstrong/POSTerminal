@@ -7,31 +7,32 @@ namespace RadioShackPOS
     {
         static void Main(string[] args)
         {
-            System.Console.WriteLine("Welcome to Radioshack");
-            Menu.DisplayMainMenu();
-            System.Console.WriteLine("put in some test input");
-            var answer = Console.ReadLine();
-            var validator = new Validator();
-            if (validator.ValidExpDate(answer))
-            {
-                Console.WriteLine("valid");
-            }
-            Console.ReadKey();
-            Console.ForegroundColor = ConsoleColor.White;
+            //System.Console.WriteLine("Welcome to Radioshack");
+            //Menu.DisplayMainMenu();
+            //System.Console.WriteLine("put in some test input");
+            //var answer = Console.ReadLine();
+            //var validator = new Validator();
+            //if (validator.ValidExpDate(answer))
+            //{
+            //    Console.WriteLine("valid");
+            //}
+            //Console.ReadKey();
+            //Console.ForegroundColor = ConsoleColor.White;
             ////////// TESTING - MIKE ///////////////////////////
             // CASH METHOD IS HERE IF YOU WANT TO TEST IT
-            //var cash = new Cash();
-            //var cashTransaction = cash.Transaction();
+            float total = 100.00f;
+            var cash = new Cash(total); ;
+            cash.Transaction(total);
             //Console.WriteLine(cashTransaction);
-            // CREDIT CARD METHOD IS HERE IF YOU WANT TO TEST IT
-            //var creditCard = new CreditCard();
-            //var ccTransaction = creditCard.Transaction();
+            //CREDIT CARD METHOD IS HERE IF YOU WANT TO TEST IT
+            var creditCard = new CreditCard(total);
+            creditCard.Transaction(total);
             //Console.WriteLine(ccTransaction);
-            // CHECK METHOD IS HERE IF YOU WANT TO TEST IT
-            //var check = new Check();
-            //var checkTransaction = check.Transaction();
+            //CHECK METHOD IS HERE IF YOU WANT TO TEST IT
+            var check = new Check(total);
+            check.Transaction(total);
             //Console.WriteLine(checkTransaction);
-            //Console.ReadKey();
+            Console.ReadKey();
             /////////////// END TESTING //////////////////////////
 
         }

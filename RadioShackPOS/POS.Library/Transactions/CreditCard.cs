@@ -1,21 +1,27 @@
 ﻿using System;
+using POS.Library.Transactions;
 
 namespace POS.Library
 {
-    public class CreditCard
+    public class CreditCard : ITransactionModel
     {
-        // yup...another validator
-        Validator validator = new Validator();
+        public float Total { get; set; }
+
+        Validator Validator = new Validator();
+
         // ctor
-        public CreditCard() { }
+        public CreditCard(float total)
+        {
+            Total = total;
+        }
         // main methood for handling credit card transactions
-        public string Transaction()
+        public void Transaction(float total)
         {
             AskForCCNumber();
             AskForExpDate();
             AskForCVV();
             Console.ForegroundColor = ConsoleColor.Green;
-            return "Your purchase has been completed!";
+            Console.WriteLine("Your purchase has been completed!");
         }
         // method to recursively ask for cc number if it is invalid
         public void AskForCCNumber()
@@ -25,7 +31,7 @@ namespace POS.Library
             var _creditCardNumber = Console.ReadLine();
             // if input is invalid display error
             // and call the method recursively
-            if (!validator.ValidCCNumber(_creditCardNumber))
+            if (!Validator.ValidCCNumber(_creditCardNumber))
             {
                 Console.WriteLine("Please enter a valid credit card number");
                 AskForCCNumber();
@@ -39,10 +45,10 @@ namespace POS.Library
             var _expDate = Console.ReadLine();
             // if input is invalid display error
             // and call the method recursively
-            if (!validator.ValidExpDate(_expDate))
+            if (!Validator.ValidExpDate(_expDate))
             {
                 Console.WriteLine("Please enter a valid expiration date");
-                Transaction();
+                AskForExpDate();
             }
         }
         // method to recursively ask for cvv number if it is invalid
@@ -53,10 +59,10 @@ namespace POS.Library
             var _cVV = Console.ReadLine();
             // if input is invalid display error
             // and call the method recursively
-            if (!validator.ValidCVV(_cVV))
+            if (!Validator.ValidCVV(_cVV))
             {
                 Console.WriteLine("Please enter a valid CVV (3 digit code at the end of the signature line");
-                Transaction();
+                AskForCVV();
             }
         }
     }
