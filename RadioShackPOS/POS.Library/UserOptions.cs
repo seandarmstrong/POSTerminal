@@ -17,7 +17,8 @@ namespace POS.Library
                     break;
 
                 case 2:
-                    Order.ViewOrderCart();
+
+                    Menu.DisplayCart();
                     break;
 
                 case 3:

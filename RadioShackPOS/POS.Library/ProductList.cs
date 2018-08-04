@@ -19,7 +19,9 @@ namespace POS.Library
             try
             {
                 using (TextFieldParser parser = new TextFieldParser(
+
                     @"C:\Users\Mozzey\GrandCircus\Midterm\POSTerminal\RadioShackPOS\POS.Library\products.csv")
+
                 )
                 {
                     parser.TextFieldType = FieldType.Delimited;

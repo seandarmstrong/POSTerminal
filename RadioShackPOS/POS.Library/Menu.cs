@@ -1,17 +1,21 @@
 ﻿using System;
 using System.IO;
+using System.Collections.Generic;
 
 namespace POS.Library
 {
     public class Menu
     {
+        private const string LIST_FORMAT = "{0, -4}{1, -20}{2, -25}{3, -10}{4,-5}";
+
         public static void DisplayMainMenu()
         {
 
             var menu = String.Format("{0}\n{1}\n{2}\n{3}",
                 "What would you like to do?",
                 "1. View products",
-                "2. Check out",
+                "2. View Cart",
+                "3. Checkout",
                 "3. Leave store");
             Console.WriteLine(menu);
             UserOptions.GetMainMenuResponse();
@@ -20,26 +24,26 @@ namespace POS.Library
         public static void DisplayProductMenu()
         {
 
-            Console.WriteLine(Order.product);
-
-            //delete
-            StreamReader readProducts = new StreamReader(@"C: \Users\frees\source\repos\POSTerminal\RadioShackPOS\POS.Library\products.txt");
-            while (true)
+            var menu = new ProductList();
+            List<Product> productList = menu.BuildList();
+                Console.WriteLine(LIST_FORMAT, "", "Category", "Name",  "Price", "Description");
+            Console.WriteLine("");
+               
+            foreach (var item in productList)
             {
-                string line = readProducts.ReadLine();
-                if (line == null)
-                {
-                    break;
-                }
-                Console.WriteLine(line);
-                Console.ReadLine();
-
+                Console.WriteLine(LIST_FORMAT, (productList.IndexOf(item) + 1), item.ReturnCategory(), item.ReturnName(), item.ReturnPrice(), item.ReturnDescription() );
             }
         }
 
-        public static void DisplayPaymentMethods()
+        public static void DisplayCart()
         {
-
+            var cart = new Order();
+            int i = 0;
+            List<Product> cartList = cart.BuildOrderList(i);
+            for (i=0; i<cartList.Count; i++)
+            {
+                Console.WriteLine(cartList);
+            }
         }
     }
 }
