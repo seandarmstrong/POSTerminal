@@ -45,5 +45,24 @@ namespace POS.Library
             Console.WriteLine("Press any key to return to main menu.");
             Console.ReadKey();
         }
+        
+        public static float CheckoutDisplay()
+        {
+            var subTotal = 0f;
+            float salesTax = .06f;
+            float taxOnSale = subTotal * salesTax;
+            float grandTotal = subTotal + taxOnSale;
+
+            Console.WriteLine(LIST_FORMAT, "", "Category", "Name", "Price", "Description");
+            foreach (var product in orderList)
+            {
+                Console.WriteLine(LIST_FORMAT, (orderList.IndexOf(product) + 1), product.Category, product.Name, product.Price, product.Description);
+                subTotal = subTotal + product.Price;
+                
+            }
+
+            Console.WriteLine($"\n Your total price for this transaction will be {grandTotal}\n");
+            return grandTotal;
+        }
     }
 }
