@@ -1,5 +1,4 @@
 ﻿using System;
-using POS.Library.Transactions;
 
 namespace POS.Library
 {

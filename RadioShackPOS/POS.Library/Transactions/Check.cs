@@ -1,6 +1,4 @@
 ﻿using System;
-using POS.Library.Transactions;
-using POS.Library.Models;
 
 namespace POS.Library
 {
