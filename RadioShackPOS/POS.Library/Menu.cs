@@ -6,7 +6,7 @@ namespace POS.Library
 {
     public class Menu
     {
-        private const string LIST_FORMAT = "{0, -6}{1, -8}{2, -13}{3, -18}{4,-35}";
+        private const string LIST_FORMAT = "{0, -4}{1, -20}{2, -25}{3, -10}{4,-5}";
 
         public static void DisplayMainMenu()
         {
@@ -25,12 +25,12 @@ namespace POS.Library
         {
             var menu = new ProductList();
             List<Product> productList = menu.BuildList();
-                Console.WriteLine("\nVIEW ALL TASKS");
-                Console.WriteLine(LIST_FORMAT, "Category", "Name", "Description", "Price", "Description");
+                Console.WriteLine(LIST_FORMAT, "", "Category", "Name",  "Price", "Description");
+            Console.WriteLine("");
                
             foreach (var item in productList)
             {
-                Console.WriteLine(LIST_FORMAT, (productList.IndexOf(item) + 1), item.ReturnCategory(), item.ReturnName(), item.ReturnDescription(), item.ReturnPrice());
+                Console.WriteLine(LIST_FORMAT, (productList.IndexOf(item) + 1), item.ReturnCategory(), item.ReturnName(), item.ReturnPrice(), item.ReturnDescription() );
             }
         }
 
