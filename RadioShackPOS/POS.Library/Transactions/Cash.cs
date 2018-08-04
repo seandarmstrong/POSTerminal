@@ -2,41 +2,45 @@
 
 namespace POS.Library
 {
-    public class Cash
+    public class Cash : ICashModel
     {
-        // omgoodness...it's a validator
-        Validator validator = new Validator();
-        // ctor
-        public Cash() { }
+        
         // PROPS
-        private static float _total = 100.00f;
-        private static float _tender { get; set; }
-        private static float Change { get; set; }
-
-        //handle making change for the customer
-        public static string MakeChange()
+        public string Tender { get; private set; }
+        public float Change { get; private set; }
+        public float Total { get; set; }
+        Validator Validator = new Validator();
+        // ctor
+        public Cash(float total)
         {
-            return (_tender - _total).ToString("c2");
+            Total = total;
         }
 
-        public string Transaction()
+        //handle making change for the customer
+        public string MakeChange(float total)
+        {
+            Change = total - float.Parse(Tender);
+            return Change.ToString("c2");
+        }
+
+        public void Transaction(float total)
         {
             // ask for and store user input
             Console.Write("Please enter a dollar amount('100.00'): ");
-            var _tender = Console.ReadLine();
+            Tender = Console.ReadLine();
             // validate user input to be in the form of 0.00 
             // the last two decimal places matter the most
-            if (!validator.VailidCashFormat(_tender))
+            if (!Validator.VailidCashFormat(Tender))
             {
                 // if invalid input call CashTransaction recursively
                 Console.WriteLine("A valid dollar amount will end with two decimal places(100.00)");
-                Transaction();
+                Transaction(total);
             }
             // convert user input to float
-            float change = float.Parse(_tender);
+            Change = float.Parse(Tender) - total;
             // display the users change
             Console.ForegroundColor = ConsoleColor.Green;
-            return String.Format("Your change is {0}", MakeChange());
+            Console.WriteLine(String.Format("Your change is {0}", MakeChange(Change)));
         }
     }
 }

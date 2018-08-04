@@ -18,11 +18,12 @@ namespace POS.Library
                 "3. Checkout",
                 "3. Leave store");
             Console.WriteLine(menu);
-            UserOptions.MainMenueOptions();
+            UserOptions.GetMainMenuResponse();
         }
 
         public static void DisplayProductMenu()
         {
+
             var menu = new ProductList();
             List<Product> productList = menu.BuildList();
                 Console.WriteLine(LIST_FORMAT, "", "Category", "Name",  "Price", "Description");

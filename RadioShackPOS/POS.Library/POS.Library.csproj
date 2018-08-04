@@ -42,7 +42,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\ICashModel.cs" />
+    <Compile Include="Interfaces\IProductModel.cs" />
     <Compile Include="ProductList.cs" />
+    <Compile Include="Products\Cable.cs" />
+    <Compile Include="Products\CarAccessory.cs" />
+    <Compile Include="Products\ElectronicDevice.cs" />
+    <Compile Include="Products\Phone.cs" />
+    <Compile Include="Products\Radio.cs" />
     <Compile Include="Transactions\Cash.cs" />
     <Compile Include="Transactions\Check.cs" />
     <Compile Include="Transactions\CreditCard.cs" />
@@ -50,6 +57,9 @@
     <Compile Include="Order.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Interfaces\ICheckModel.cs" />
+    <Compile Include="Interfaces\ICreditCardModel.cs" />
+    <Compile Include="Interfaces\ITransactionModel.cs" />
     <Compile Include="UserOptions.cs" />
     <Compile Include="Validator.cs" />
   </ItemGroup>

@@ -1,41 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using POS.Library.Interfaces;
 
 namespace POS.Library
 {
-    public class Product
+    public class Product : IProductModel
     {
+        public string Category { get; private set; }
+        public string Name { get; private set; }
+        public string Description { get; private set; }
+        public float Price { get; private set; }
+
         public Product(string category, string name, float price, string description)
         {
-            _category = category;
-            _name = name;
-            _price = price;
-            _description = description;
-        }
-
-        private string _category { get; set; }
-        private string _name { get; set; }
-        private float _price { get; set; }
-        private string _description { get; set; }
-
-        public string ReturnCategory()
-        {
-            return _category;
-        }
-
-        public string ReturnName()
-        {
-            return _name;
-        }
-
-        public float ReturnPrice()
-        {
-            return _price;
-        }
-
-        public string ReturnDescription()
-        {
-            return _description;
+            Category = category;
+            Name = name;
+            Price = price;
+            Description = description;
         }
     }
 }

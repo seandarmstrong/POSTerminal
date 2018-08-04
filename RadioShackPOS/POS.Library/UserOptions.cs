@@ -1,32 +1,42 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace POS.Library
 {
     public class UserOptions
     {
-        public static void MainMenueOptions()
+        public static void GetMainMenuResponse()
         {
-            Console.WriteLine(":>");
-            var userInput = int.Parse(Console.ReadLine()); //add validation for integer check and/or exception handling
+            Console.Write("Please select from the main menu: ");
+            var userInput = int.Parse(Console.ReadLine());
 
             switch (userInput)
             {
                 case 1:
                     Menu.DisplayProductMenu();
+                    Order.BuildOrderList(GetProductResponse());
                     break;
 
                 case 2:
+
                     Menu.DisplayCart();
                     break;
 
                 case 3:
+                    Menu.DisplayPaymentMethods();
+                    break;
+                case 4:
                     Console.WriteLine("Goodbye");
+                    break;
+                default:
+                    Console.WriteLine("I'm sorry, that is not a valid response.");
                     break;
             }
         }
-}
+
+        public static int GetProductResponse()
+        {
+            Console.Write("Enter the product number that you would like to add to the order: ");
+            return Convert.ToInt32(Console.ReadLine().Trim());
+        }
+    }
 }
