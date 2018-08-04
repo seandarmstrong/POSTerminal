@@ -1,4 +1,5 @@
 ﻿using POS.Library;
+using POS.Library.Transactions;
 using System;
 
 namespace RadioShackPOS
@@ -16,22 +17,19 @@ namespace RadioShackPOS
             {
                 Console.WriteLine("valid");
             }
-            Console.ReadKey();
-            Console.ForegroundColor = ConsoleColor.White;
+            //Console.ForegroundColor = ConsoleColor.White;
             ////////// TESTING - MIKE ///////////////////////////
-            // CASH METHOD IS HERE IF YOU WANT TO TEST IT
-            //var cash = new Cash();
-            //var cashTransaction = cash.Transaction();
-            //Console.WriteLine(cashTransaction);
-            // CREDIT CARD METHOD IS HERE IF YOU WANT TO TEST IT
-            //var creditCard = new CreditCard();
-            //var ccTransaction = creditCard.Transaction();
-            //Console.WriteLine(ccTransaction);
-            // CHECK METHOD IS HERE IF YOU WANT TO TEST IT
-            //var check = new Check();
-            //var checkTransaction = check.Transaction();
-            //Console.WriteLine(checkTransaction);
-            //Console.ReadKey();
+            // CASH METHOD IS HERE IF YOU WANT TO TEST IT - hard coded total for testing
+            //float total = 100.00f;
+            //var cash = new Cash(total);
+            //cash.Transaction(total);
+            //CREDIT CARD METHOD IS HERE IF YOU WANT TO TEST IT
+            //var creditCard = new CreditCard(total);
+            //creditCard.Transaction(total);
+            //CHECK METHOD IS HERE IF YOU WANT TO TEST IT
+            //var check = new Check(total);
+            //check.Transaction(total);
+            Console.ReadKey();
             /////////////// END TESTING //////////////////////////
 
         }
