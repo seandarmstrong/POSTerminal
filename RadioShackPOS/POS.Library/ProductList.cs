@@ -9,7 +9,7 @@ namespace POS.Library
     public class ProductList
     {
         // MIKE PATH .txt
-        readonly string mikePath = @"C:\Users\Mozzey\GrandCircus\Midterm\POSTerminal\RadioShackPOS\POS.Library\products.csv";
+        readonly string mikePath = @"C:\Users\armst\Documents\Grand_Circus\POS_Terminal\POSTerminal\RadioShackPOS\POS.Library\products.csv";
         public  List<IProductModel> productList = new List<IProductModel>();
 
         public List<IProductModel> BuildList()
