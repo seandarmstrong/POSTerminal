@@ -6,7 +6,8 @@ namespace POS.Library
 {
     public class Order
     {
-        private const string LIST_FORMAT = "{0, -4}{1, -20}{2, -25}{3, -10}{4, -10}{5, -10}{6,-5}";
+        private const string CART_FORMAT = "{0, -20}{1, -25}{2, -10}{3, -10}{4, -12}{5,-5}";
+        private const string MONEY_FORMAT = "{0,-15}{1,-12}";
 
         private float _subTotal { get; set; }
         private float _salesTax = .06f;
@@ -41,14 +42,15 @@ namespace POS.Library
         {
             var subTotal = 0f;
             Console.WriteLine("");
-            Console.WriteLine(LIST_FORMAT, "", "Category", "Name", "Price", "Quantity", "Total", "Description");
+            Console.WriteLine(CART_FORMAT, "Category", "Name", "Price", "Quantity", "Total", "Description");
             foreach (var product in orderList)
             {
-                Console.WriteLine(LIST_FORMAT, (orderList.IndexOf(product) + 1), product.Category, product.Name, product.Price, product.Quantity, product.Total, product.Description);
+                Console.WriteLine(CART_FORMAT, product.Category, product.Name, product.Price.ToString("C"), product.Quantity, product.Total.ToString("C"), product.Description);
                 subTotal = subTotal + product.Total;
             }
 
-            Console.WriteLine($"\nThe current subtotal of the items in the cart is {subTotal}.\n");
+            Console.WriteLine("");
+            Console.WriteLine(MONEY_FORMAT, "Subtotal:", subTotal.ToString("C"));
             Console.WriteLine("Press any key to return to main menu.");
             Console.ReadKey();
         }
@@ -59,17 +61,19 @@ namespace POS.Library
             float salesTax = .06f;
 
 
-            Console.WriteLine(LIST_FORMAT, "", "Category", "Name", "Price", "Description");
+            Console.WriteLine(CART_FORMAT, "Category", "Name", "Price", "Quantity", "Total", "Description");
             foreach (var product in orderList)
             {
-                Console.WriteLine(LIST_FORMAT, (orderList.IndexOf(product) + 1), product.Category, product.Name, product.Price, product.Description);
-                subTotal = subTotal + product.Price;
-
+                Console.WriteLine(CART_FORMAT, product.Category, product.Name, product.Price.ToString("C"), product.Quantity, product.Total.ToString("C"), product.Description);
+                subTotal = subTotal + product.Total;
             }
             float taxOnSale = subTotal * salesTax;
             float grandTotal = (float)Math.Round(subTotal + taxOnSale, 2);
 
-            Console.WriteLine($"\n The sales tax on this purchase is {taxOnSale}. Your total price for this transaction will be {grandTotal}.\n");
+            Console.WriteLine("");
+            Console.WriteLine(MONEY_FORMAT, "Subtotal:", subTotal.ToString("C"));
+            Console.WriteLine(MONEY_FORMAT, "Sales Tax:", taxOnSale.ToString("C"));
+            Console.WriteLine(MONEY_FORMAT, "Grand Total:", grandTotal.ToString("C"));
             return grandTotal;
         }
     }
