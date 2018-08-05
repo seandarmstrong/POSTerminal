@@ -32,6 +32,11 @@ namespace POS.Library
             return orderList;
         }
 
+        public static int OrderListCount()
+        {
+            return orderList.Count;
+        }
+
         public static void ViewOrderCart()
         {
             var subTotal = 0f;
