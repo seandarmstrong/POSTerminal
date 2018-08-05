@@ -12,12 +12,13 @@ namespace POS.Library
         public static void DisplayMainMenu()
         {
 
-            var menu = String.Format("\n{0}\n{1}\n{2}\n{3}",
+            var menu = String.Format("\n{0}\n{1}\n{2}\n{3}\n{4}\n{5}",
                 "What would you like to do?",
                 "1. View products",
                 "2. View Cart",
                 "3. Checkout",
-                "4. Leave store");
+                "4. Reset Shopping Cart",
+                "5. Leave POS Terminal");
             Console.WriteLine(menu);
             UserOptions.GetMainMenuResponse();
         }
