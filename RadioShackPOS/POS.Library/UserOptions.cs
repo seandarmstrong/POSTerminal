@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace POS.Library
 {
@@ -30,6 +29,8 @@ namespace POS.Library
                     else
                     {
                         Console.WriteLine("There doesn't appear to anything in the cart. Please add products to view cart.");
+                        Console.WriteLine("Press any key to continue...");
+                        Console.ReadKey();
                     }
                     break;
 
@@ -38,6 +39,9 @@ namespace POS.Library
                     Order.ResetOrderList();
                     break;
                 case 4:
+                    Order.ResetOrderList();
+                    break;
+                case 5:
                     Console.WriteLine("Goodbye");
                     break;
                 default:
@@ -49,7 +53,16 @@ namespace POS.Library
         public static int GetProductResponse()
         {
             Console.Write("Enter the product number that you would like to add to the order: ");
-            return Convert.ToInt32(Console.ReadLine().Trim());
+            var selection = Convert.ToInt32(Console.ReadLine().Trim());
+            if (selection > 0 && selection <= ProductList.GetProductListCount())
+            {
+                return selection;
+            }
+            else
+            {
+                Console.WriteLine("That product number does not exist. Please try again.\n");
+                return GetProductResponse();
+            }
         }
 
         public static int GetProductQuantity()
@@ -80,7 +93,7 @@ namespace POS.Library
         {
             var grandTotal = Order.CheckoutDisplay();
             var userInput = int.Parse(Console.ReadLine());
-            switch(userInput)
+            switch (userInput)
             {
                 case 1:
                     var cash = new Cash();

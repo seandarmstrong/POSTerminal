@@ -10,7 +10,7 @@ namespace POS.Library
     {
         // MIKE PATH .txt
         readonly string mikePath = @"C:\Users\armst\Documents\Grand_Circus\POS_Terminal\POSTerminal\RadioShackPOS\POS.Library\products.csv";
-        public  List<IProductModel> productList = new List<IProductModel>();
+        public static List<IProductModel> productList = new List<IProductModel>();
 
         public List<IProductModel> BuildList()
         {
@@ -37,15 +37,9 @@ namespace POS.Library
             return productList;
         }
 
-        //public void DisplayList()
-        //{
-        //    Console.WriteLine($"The list count is {productList.Count}");
-        //    foreach (var product in productList)
-        //    {
-        //        Console.WriteLine($"{product.Category}, {product.Name}, {product.Price}, {product.Description}");
-        //    }
-
-        //    Console.ReadKey();
-        //}
+        public static int GetProductListCount()
+        {
+            return productList.Count;
+        }
     }
 }
