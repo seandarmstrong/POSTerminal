@@ -78,16 +78,25 @@ namespace POS.Library
         }
         public static void GetPaymentOptions()
         {
+            var grandTotal = Order.CheckoutDisplay();
             var userInput = int.Parse(Console.ReadLine());
             switch(userInput)
             {
                 case 1:
-                    var grandTotal = Order.CheckoutDisplay();
                     var cash = new Cash();
                     cash.Transaction(grandTotal);
-                    
+                    break;
+                case 2:
+                    var check = new Check();
+                    check.Transaction(grandTotal);
+                    break;
+                case 3:
+                    var cc = new CreditCard();
+                    cc.Transaction(grandTotal);
                     break;
                 default:
+                    Console.WriteLine("Sorry but that is not a payment option.");
+                    GetPaymentOptions();
                     break;
             }
 

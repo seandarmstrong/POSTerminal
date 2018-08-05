@@ -12,9 +12,8 @@ namespace POS.Library
         Validator Validator = new Validator();
 
         // ctor
-        public CreditCard(float total)
+        public CreditCard()
         {
-            Total = total;
         }
         // main methood for handling credit card transactions
         public void Transaction(float total)

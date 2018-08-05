@@ -10,9 +10,8 @@ namespace POS.Library
 
         Validator Validator = new Validator();
         // ctor
-        public Check(float total)
+        public Check()
         {
-            Total = total;
         }
 
         public void Transaction(float total)
