@@ -36,15 +36,16 @@ namespace POS.Library
             }
         }
 
-        public static void DisplayCart()
+        /*public static void DisplayCart()
         {
             int i = 0;
-            List<IProductModel> cartList = Order.BuildOrderList(i);
+            List<OrderList> cartList = Order.BuildOrderList(i);
             for (i=0; i<cartList.Count; i++)
             {
                 Console.WriteLine(cartList);
             }
-        }
+        }*/
+
         public static void DisplayPayment()
         {
             var menu = String.Format("\n{0}\n{1}\n{2}",

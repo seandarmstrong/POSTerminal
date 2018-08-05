@@ -15,7 +15,7 @@ namespace POS.Library
                     Menu.DisplayProductMenu();
                     do
                     {
-                        Order.BuildOrderList(GetProductResponse());
+                        Order.BuildOrderList(GetProductResponse(), GetProductQuantity());
                         Console.Write("Would you like to add another product to the cart?(y/n): ");
                     } while (AddAnother(Console.ReadLine().Trim().ToLower()));
                     break;
@@ -41,6 +41,12 @@ namespace POS.Library
         public static int GetProductResponse()
         {
             Console.Write("Enter the product number that you would like to add to the order: ");
+            return Convert.ToInt32(Console.ReadLine().Trim());
+        }
+
+        public static int GetProductQuantity()
+        {
+            Console.Write("Enter the number of this product you would like to add to order: ");
             return Convert.ToInt32(Console.ReadLine().Trim());
         }
 
