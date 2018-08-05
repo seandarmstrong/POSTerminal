@@ -85,6 +85,7 @@ namespace POS.Library
                     var grandTotal = Order.CheckoutDisplay();
                     var cash = new Cash();
                     cash.Transaction(grandTotal);
+                    
                     break;
                 default:
                     break;

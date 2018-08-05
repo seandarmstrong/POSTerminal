@@ -23,7 +23,8 @@ namespace POS.Library
             AskForExpDate();
             AskForCVV();
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Your purchase has been completed!");
+            Console.WriteLine($"Your purchase for {total} has been completed!");
+            Console.ForegroundColor = ConsoleColor.White;
         }
         // method to recursively ask for cc number if it is invalid
         public string AskForCCNumber()
