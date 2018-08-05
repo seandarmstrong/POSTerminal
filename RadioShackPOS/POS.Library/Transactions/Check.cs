@@ -22,6 +22,7 @@ namespace POS.Library
             // fancy pants success color and message
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Your check #{ CheckNumber } has been processed!");
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
         public string GetCheckNumber(float total)
