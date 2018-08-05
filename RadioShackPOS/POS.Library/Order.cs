@@ -33,9 +33,18 @@ namespace POS.Library
             return orderList;
         }
 
-        public static int OrderListCount()
+        public static int GetOrderListCount()
         {
             return orderList.Count;
+        }
+
+        public static void ResetOrderList()
+        {
+            Console.WriteLine("Would you like to reset the cart for another transaction? (y/n)");
+            if (UserOptions.ContinueAction(Console.ReadLine().ToLower().Trim()))
+            {
+                orderList.Clear();
+            }
         }
 
         public static void ViewOrderCart()

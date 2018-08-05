@@ -27,12 +27,16 @@ namespace POS.Library
 
             var menu = new ProductList();
             List<IProductModel> productList = menu.BuildList();
-            Console.WriteLine(LIST_FORMAT, "", "Category", "Name",  "Price", "Description");
-            Console.WriteLine("");
-               
-            foreach (var item in productList)
+            if (productList.Count > 0)
             {
-                Console.WriteLine(LIST_FORMAT, (productList.IndexOf(item) + 1), item.Category, item.Name, item.Price.ToString("C"), item.Description );
+                Console.WriteLine(LIST_FORMAT, "", "Category", "Name", "Price", "Description");
+                Console.WriteLine("");
+
+                foreach (var item in productList)
+                {
+                    Console.WriteLine(LIST_FORMAT, (productList.IndexOf(item) + 1), item.Category, item.Name,
+                        item.Price.ToString("C"), item.Description);
+                }
             }
         }
 
