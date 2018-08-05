@@ -17,7 +17,7 @@ namespace POS.Library
                 "1. View products",
                 "2. View Cart",
                 "3. Checkout",
-                "3. Leave store");
+                "4. Leave store");
             Console.WriteLine(menu);
             UserOptions.GetMainMenuResponse();
         }

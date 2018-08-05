@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace POS.Library
 {
@@ -22,7 +23,14 @@ namespace POS.Library
 
                 case 2:
 
-                    Order.ViewOrderCart();
+                    if (Order.OrderListCount() > 0)
+                    {
+                        Order.ViewOrderCart();
+                    }
+                    else
+                    {
+                        Console.WriteLine("There doesn't appear to anything in the cart. Please add products to view cart.");
+                    }
                     break;
 
                 case 3:
