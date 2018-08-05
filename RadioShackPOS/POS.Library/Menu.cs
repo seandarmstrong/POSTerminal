@@ -48,7 +48,7 @@ namespace POS.Library
 
         public static void DisplayPayment()
         {
-            var menu = String.Format("\n{0}\n{1}\n{2}",
+            var menu = String.Format("\n{0}\n{1}\n{2}\n{3}",
                 "How would you like to pay?",
                 "1. Cash",
                 "2. Check",
