@@ -50,8 +50,7 @@ namespace POS.Library
         {
             var subTotal = 0f;
             float salesTax = .06f;
-            float taxOnSale = subTotal * salesTax;
-            float grandTotal = subTotal + taxOnSale;
+            
 
             Console.WriteLine(LIST_FORMAT, "", "Category", "Name", "Price", "Description");
             foreach (var product in orderList)
@@ -60,7 +59,9 @@ namespace POS.Library
                 subTotal = subTotal + product.Price;
                 
             }
-            
+            float taxOnSale = subTotal * salesTax;
+            float grandTotal = (float)Math.Round(subTotal + taxOnSale, 2);
+
             Console.WriteLine($"\n The sales tax on this purchase is {taxOnSale}. Your total price for this transaction will be {grandTotal}.\n");
             return grandTotal;
         }
