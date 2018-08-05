@@ -17,7 +17,7 @@ namespace POS.Library
                 "1. View products",
                 "2. View Cart",
                 "3. Checkout",
-                "3. Leave store");
+                "4. Leave store");
             Console.WriteLine(menu);
             UserOptions.GetMainMenuResponse();
         }
@@ -32,7 +32,7 @@ namespace POS.Library
                
             foreach (var item in productList)
             {
-                Console.WriteLine(LIST_FORMAT, (productList.IndexOf(item) + 1), item.Category, item.Name, item.Price, item.Description );
+                Console.WriteLine(LIST_FORMAT, (productList.IndexOf(item) + 1), item.Category, item.Name, item.Price.ToString("C"), item.Description );
             }
         }
 
