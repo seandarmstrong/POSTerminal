@@ -18,11 +18,10 @@ namespace POS.Library
         public List<IProductModel> BuildList()
         {
             string[] fields;
-
             try
             {
 
-                using (TextFieldParser parser = new TextFieldParser(seanPath))
+                using (TextFieldParser parser = new TextFieldParser(mikePath))
 
 
                 {

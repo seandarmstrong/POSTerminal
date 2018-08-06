@@ -20,17 +20,18 @@ namespace POS.Library
             return regx.IsMatch(expDate);
         }
         // checks if the cc date is is before todays date.
-        public bool PastDueDate(string expDate)
+        public bool PastDueDate(DateTime expDate)
         {
-            DateTime expirationDate = DateTime.ParseExact("expDate", "MMyy", CultureInfo.InvariantCulture);
-            Console.WriteLine(expirationDate + "and" + DateTime.Now);
-            if(expirationDate >= DateTime.Now)
+            //DateTime expirationDate = DateTime.ParseExact("expDate", "MMyy", CultureInfo.InvariantCulture);
+            //Console.WriteLine(expirationDate + "and" + DateTime.Now);
+            var expired = DateTime.Compare(expDate, DateTime.Now);
+            if(expired >= 0)
             {
-                return true;
+                return false;
             }
             else
             {
-                return false;
+                return true;
             }
         }
         // validate cvv on credit card example(123)
