@@ -4,16 +4,21 @@ namespace POS.Library
 {
     public class UserOptions
     {
+        public Validator validate = new Validator();
         public bool GetMainMenuResponse()
         {
             Console.Write("Please select from the main menu: ");
-            int userInput = Validator.ValidateUserInput(Console.ReadLine());
+            int userInput = validate.ValidateUserInput(Console.ReadLine());
             var order = new Order();
+
+            var menu = new Menu();
+
             var listCount = order.Catalog.GetProductListCount();
+
             switch (userInput)
             {
                 case 1:
-                    Menu.DisplayProductMenu();
+                    menu.DisplayProductMenu();
                     do
                     {
                         if (listCount <= 0)
@@ -55,7 +60,7 @@ namespace POS.Library
                     if (order.GetOrderListCount() > 0)
                     {
                         order.CheckoutDisplay();
-                        Menu.DisplayPayment();
+                        menu.DisplayPayment();
                         order.ResetOrderList();
                     }
                     else
@@ -82,10 +87,10 @@ namespace POS.Library
             return true;
         }
 
-        public static int GetProductResponse(string input)
+        public int GetProductResponse(string input)
         {
             var product = new ProductList();
-            var selection = Validator.ValidateUserInput(input);
+            var selection = validate.ValidateUserInput(input);
             if (selection > 0 && selection <= product.GetProductListCount())
             {
                 return selection;
@@ -97,9 +102,9 @@ namespace POS.Library
             }
         }
 
-        public static int GetProductQuantity(string input)
+        public int GetProductQuantity(string input)
         {
-            int quantity = Validator.ValidateUserInput(input);
+            int quantity = validate.ValidateUserInput(input);
             if (quantity > 0)
             {
                 return quantity;
@@ -112,7 +117,7 @@ namespace POS.Library
 
         }
 
-        public static bool ContinueAction(string input)
+        public bool ContinueAction(string input)
         {
             if (input == "yes" || input == "y")
             {
@@ -130,11 +135,11 @@ namespace POS.Library
                 }
             }
         }
-        public static void GetPaymentOptions()
+        public void GetPaymentOptions()
         {
             var order = new Order();
             var grandTotal = order.GetGrandTotal();
-            var userInput = Validator.ValidateUserInput(Console.ReadLine());
+            var userInput = validate.ValidateUserInput(Console.ReadLine());
             switch (userInput)
             {
                 case 1:

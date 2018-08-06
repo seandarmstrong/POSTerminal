@@ -6,17 +6,16 @@ namespace POS.Library
     {
         private const string LIST_FORMAT = "{0, -4}{1, -20}{2, -25}{3, -10}{4,-5}";
 
-        public static ProductList product = new ProductList();
-
         private static bool running = true;
 
-        public static bool IsRunning()
+        public UserOptions userOptions = new UserOptions();
+
+        public bool IsRunning()
         {
             return running;
         }
 
-
-        public static void DisplayMainMenu()
+        public void DisplayMainMenu()
         {
 
             var menu = String.Format("\n{0}\n{1}\n{2}\n{3}\n{4}\n{5}",
@@ -27,11 +26,10 @@ namespace POS.Library
                 "4. Reset Shopping Cart",
                 "5. Leave POS Terminal");
             Console.WriteLine(menu);
-            var userOptions = new UserOptions();
             running = userOptions.GetMainMenuResponse();
         }
 
-        public static void DisplayProductMenu()
+        public void DisplayProductMenu()
         {
             var productList = new ProductList();
             var listOfProducts = productList.GetProducts();
@@ -49,7 +47,7 @@ namespace POS.Library
             
         }
 
-        public static void DisplayPayment()
+        public void DisplayPayment()
         {
             var menu = String.Format("\n{0}\n{1}\n{2}\n{3}",
                 "How would you like to pay?",
@@ -57,7 +55,7 @@ namespace POS.Library
                 "2. Check",
                 "3. Card");
             Console.WriteLine(menu);
-            UserOptions.GetPaymentOptions();
+            userOptions.GetPaymentOptions();
 
         }
     }

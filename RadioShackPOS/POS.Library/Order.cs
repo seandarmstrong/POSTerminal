@@ -60,8 +60,9 @@ namespace POS.Library
 
         public void ResetOrderList()
         {
+            var userOptions = new UserOptions();
             Console.WriteLine("Would you like to reset the cart for another transaction? (y/n)");
-            if (UserOptions.ContinueAction(Console.ReadLine().ToLower().Trim()))
+            if (userOptions.ContinueAction(Console.ReadLine().ToLower().Trim()))
             {
                 orderList.Clear();
                 _subTotal = 0;
