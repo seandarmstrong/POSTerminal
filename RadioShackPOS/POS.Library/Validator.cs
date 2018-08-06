@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace POS.Library
 {
@@ -20,7 +21,7 @@ namespace POS.Library
         // checks if the cc date is is before todays date.
         public bool PastDueDate(string expDate)
         {
-            DateTime expirationDate = DateTime.Parse(expDate);
+            DateTime expirationDate = DateTime.ParseExact("expDate", "MMyy", CultureInfo.InvariantCulture);
             Console.WriteLine(expirationDate + "and" + DateTime.Now);
             if(expirationDate >= DateTime.Now)
             {
