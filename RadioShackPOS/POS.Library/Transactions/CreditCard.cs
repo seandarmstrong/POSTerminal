@@ -53,6 +53,12 @@ namespace POS.Library
                 Console.WriteLine("Please enter a valid expiration date");
                 AskForExpDate();
             }
+            if(!Validator.PastDueDate(ExpirationDate))
+            {
+                Console.WriteLine("Your creditcard has expired");
+                return AskForExpDate();
+            }
+            
             return ExpirationDate;
         }
         // method to recursively ask for cvv number if it is invalid
