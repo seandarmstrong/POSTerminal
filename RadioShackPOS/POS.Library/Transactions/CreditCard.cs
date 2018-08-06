@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 
 namespace POS.Library
 {
@@ -22,7 +21,7 @@ namespace POS.Library
             AskForExpDate();
             AskForCVV();
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"Your purchase for {total} has been completed!");
+            Console.WriteLine($"Your purchase for {total.ToString("C")} has been completed!");
             Console.ForegroundColor = ConsoleColor.White;
         }
         // method to recursively ask for cc number if it is invalid
@@ -51,22 +50,22 @@ namespace POS.Library
                 //var expired = DateTime.Compare(validExpDate, DateTime.Now);
                 if (DateTime.Compare(validExpDate, DateTime.Now) < 0)
                 {
-                    Console.WriteLine("Your creditcard has expired");
+                    Console.WriteLine("Your credit card has expired");
                     return AskForExpDate();
                 }
-                
+
             }
             return validExpDate.ToString("MMyy");
 
         }
-            // if input is invalid display error
-            // and call the method recursively
-            //if (!Validator.ValidExpDate(ExpirationDate))
-            //{
-            //    Console.WriteLine("Please enter a valid expiration date");
-            //    AskForExpDate();
-            //}
-            
+        // if input is invalid display error
+        // and call the method recursively
+        //if (!Validator.ValidExpDate(ExpirationDate))
+        //{
+        //    Console.WriteLine("Please enter a valid expiration date");
+        //    AskForExpDate();
+        //}
+
         // method to recursively ask for cvv number if it is invalid
         public string AskForCVV()
         {
