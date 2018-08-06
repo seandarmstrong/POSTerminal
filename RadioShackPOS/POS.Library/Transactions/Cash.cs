@@ -22,10 +22,10 @@ namespace POS.Library
             // the last two decimal places matter the most
             if (float.TryParse(tender, out float validTender) && validTender >= total)
             {
-                var change = validTender - total;
+                Change = validTender - total;
                 // display the users change
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine(String.Format("Your change is ${0}", Math.Round(change, 2)));
+                Console.WriteLine(String.Format("Your change is ${0}", Math.Round(Change, 2)));
                 Console.ForegroundColor = ConsoleColor.White;
             }
             else

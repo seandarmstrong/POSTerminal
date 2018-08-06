@@ -137,7 +137,8 @@ namespace POS.Library
         }
         public void GetPaymentOptions()
         {
-            
+            var receipt = new Receipt();
+            var receiptForOrder = new Order();
             var order = new Order();
             var grandTotal = order.GetGrandTotal();
             var userInput = validate.ValidateUserInput(Console.ReadLine());
@@ -146,18 +147,20 @@ namespace POS.Library
                 case 1:
                     var cash = new Cash();
                     cash.Transaction(grandTotal);
-                    //receipt.DisplayReceipt();
+                    receipt.DisplayReceipt(cash);
+                    receiptForOrder.ReceiptDisplay();
                     break;
                 case 2:
                     var check = new Check();
-                    var receipt = new Receipt();
                     check.Transaction(grandTotal);
                     receipt.DisplayReceipt(check);
+                    receiptForOrder.ReceiptDisplay();
                     break;
                 case 3:
                     var cc = new CreditCard();
                     cc.Transaction(grandTotal);
-                    //receipt.DisplayReceipt();
+                    receipt.DisplayReceipt(cc);
+                    receiptForOrder.ReceiptDisplay();
                     break;
                 default:
                     Console.WriteLine("Sorry but that is not a payment option.");
