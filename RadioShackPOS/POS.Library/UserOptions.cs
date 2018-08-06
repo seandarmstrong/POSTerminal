@@ -6,48 +6,57 @@ namespace POS.Library
     {
         public static void GetMainMenuResponse()
         {
-            Console.Write("Please select from the main menu: ");
-            int userInput = Validator.ValidateUserInput(Console.ReadLine());
             
 
-            switch (userInput)
+            var isRunning = true;
+            while (isRunning)
             {
-                case 1:
-                    Menu.DisplayProductMenu();
-                    do
-                    {
-                        Order.BuildOrderList(GetProductResponse(), GetProductQuantity());
-                        Console.Write("Would you like to add another product to the cart?(y/n): ");
-                    } while (ContinueAction(Console.ReadLine().Trim().ToLower()));
-                    break;
+                Console.Write("Please select from the main menu: ");
+                int userInput = Validator.ValidateUserInput(Console.ReadLine());
 
-                case 2:
+                switch (userInput)
+                {
+                    case 1:
+                        Menu.DisplayProductMenu();
+                        do
+                        {
+                            Order.BuildOrderList(GetProductResponse(), GetProductQuantity());
+                            Console.Write("Would you like to add another product to the cart?(y/n): ");
+                        } while (ContinueAction(Console.ReadLine().Trim().ToLower()));
 
-                    if (Order.GetOrderListCount() > 0)
-                    {
-                        Order.ViewOrderCart();
-                    }
-                    else
-                    {
-                        Console.WriteLine("There doesn't appear to anything in the cart. Please add products to view cart.");
-                        Console.WriteLine("Press any key to continue...");
-                        Console.ReadKey();
-                    }
-                    break;
+                        break;
 
-                case 3:
-                    Menu.DisplayPayment();
-                    Order.ResetOrderList();
-                    break;
-                case 4:
-                    Order.ResetOrderList();
-                    break;
-                case 5:
-                    Console.WriteLine("Goodbye");
-                    break;
-                default:
-                    Console.WriteLine("I'm sorry, that is not a valid response.");
-                    break;
+                    case 2:
+
+                        if (Order.GetOrderListCount() > 0)
+                        {
+                            Order.ViewOrderCart();
+                        }
+                        else
+                        {
+                            Console.WriteLine(
+                                "There doesn't appear to anything in the cart. Please add products to view cart.");
+                            Console.WriteLine("Press any key to continue...");
+                            Console.ReadKey();
+                        }
+
+                        break;
+
+                    case 3:
+                        Menu.DisplayPayment();
+                        Order.ResetOrderList();
+                        break;
+                    case 4:
+                        Order.ResetOrderList();
+                        break;
+                    case 5:
+                        Console.WriteLine("Goodbye");
+                        isRunning = false;
+                        break;
+                    default:
+                        Console.WriteLine("I'm sorry, that is not a valid response.");
+                        break;
+                }
             }
         }
 
