@@ -17,11 +17,12 @@ namespace POS.Library
             var regx = new Regex(@"^[0-9]{2}/[0-9]{2}$");
             return regx.IsMatch(expDate);
         }
-
+        // checks if the cc date is is before todays date.
         public bool PastDueDate(string expDate)
         {
             DateTime expirationDate = DateTime.Parse(expDate);
-            if(expirationDate <= DateTime.Now)
+            Console.WriteLine(expirationDate + "and" + DateTime.Now);
+            if(expirationDate >= DateTime.Now)
             {
                 return true;
             }
