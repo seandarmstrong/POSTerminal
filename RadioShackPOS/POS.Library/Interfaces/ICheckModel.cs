@@ -7,6 +7,6 @@ namespace POS.Library
         // Signature
         string CheckNumber { get; }
         // Method
-        string GetCheckNumber(float total);
+        string GetCheckNumber();
     }
 }
