@@ -53,7 +53,7 @@ namespace POS.Library
             {
                 if (listOfProducts.IndexOf(product) == productIndex)
                 {
-                    Console.WriteLine($"{quantity} of {product.Name} have been added for a line total of {quantity * product.Price}.");
+                    Console.WriteLine("{0} of {1} have been added for a line total of {2:C}.", quantity, product.Name, quantity * product.Price);
                 }
             }
         }

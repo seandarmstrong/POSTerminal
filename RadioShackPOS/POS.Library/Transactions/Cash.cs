@@ -25,7 +25,7 @@ namespace POS.Library
                 var change = validTender - total;
                 // display the users change
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine(String.Format("Your change is {0:C}", Math.Round(change, 2)));
+                Console.WriteLine(String.Format("Your change is ${0}", Math.Round(change, 2)));
                 Console.ForegroundColor = ConsoleColor.White;
             }
             else
