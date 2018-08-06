@@ -20,11 +20,11 @@ namespace POS.Library
             var tender = Console.ReadLine();
             // validate user input to be in the form of 0.00 
             // the last two decimal places matter the most
-            if (float.TryParse(tender, out float validTender) && validTender >= total)
+            if (float.TryParse(tender, out float Tender) && Tender >= total)
             {
                 var receipt = new Receipt();
                 var receiptForOrder = new Order();
-                Change = validTender - total;
+                Change = Tender - total;
                 // display the users change
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(String.Format("Your change is ${0}", Math.Round(Change, 2)));
