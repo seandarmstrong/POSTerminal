@@ -4,11 +4,10 @@ namespace POS.Library
 {
     public class UserOptions
     {
-        public static void GetMainMenuResponse()
+        public static bool GetMainMenuResponse()
         {
             Console.Write("Please select from the main menu: ");
             int userInput = Validator.ValidateUserInput(Console.ReadLine());
-            
 
             switch (userInput)
             {
@@ -19,6 +18,7 @@ namespace POS.Library
                         Order.BuildOrderList(GetProductResponse(), GetProductQuantity());
                         Console.Write("Would you like to add another product to the cart?(y/n): ");
                     } while (ContinueAction(Console.ReadLine().Trim().ToLower()));
+
                     break;
 
                 case 2:
@@ -29,10 +29,12 @@ namespace POS.Library
                     }
                     else
                     {
-                        Console.WriteLine("There doesn't appear to anything in the cart. Please add products to view cart.");
+                        Console.WriteLine(
+                            "There doesn't appear to anything in the cart. Please add products to view cart.");
                         Console.WriteLine("Press any key to continue...");
                         Console.ReadKey();
                     }
+
                     break;
 
                 case 3:
@@ -44,11 +46,14 @@ namespace POS.Library
                     break;
                 case 5:
                     Console.WriteLine("Goodbye");
+                    return false;
                     break;
                 default:
                     Console.WriteLine("I'm sorry, that is not a valid response.");
                     break;
             }
+
+            return true;
         }
 
         public static int GetProductResponse()
@@ -96,24 +101,23 @@ namespace POS.Library
             var userInput =  Validator.ValidateUserInput(Console.ReadLine());
             switch (userInput)
             {
-                case 1:
-                    var cash = new Cash();
-                    cash.Transaction(grandTotal);
-                    break;
-                case 2:
-                    var check = new Check();
-                    check.Transaction(grandTotal);
-                    break;
-                case 3:
-                    var cc = new CreditCard();
-                    cc.Transaction(grandTotal);
-                    break;
-                default:
-                    Console.WriteLine("Sorry but that is not a payment option.");
-                    GetPaymentOptions();
-                    break;
+                    case 1:
+                        var cash = new Cash();
+                        cash.Transaction(grandTotal);
+                        break;
+                    case 2:
+                        var check = new Check();
+                        check.Transaction(grandTotal);
+                        break;
+                    case 3:
+                        var cc = new CreditCard();
+                        cc.Transaction(grandTotal);
+                        break;
+                    default:
+                        Console.WriteLine("Sorry but that is not a payment option.");
+                        GetPaymentOptions();
+                        break;
             }
-
         }
     }
 }

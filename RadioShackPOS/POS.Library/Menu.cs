@@ -8,6 +8,12 @@ namespace POS.Library
     public class Menu
     {
         private const string LIST_FORMAT = "{0, -4}{1, -20}{2, -25}{3, -10}{4,-5}";
+        private static bool running = true;
+
+        public static bool IsRunning()
+        {
+            return running;
+        }
 
         public static void DisplayMainMenu()
         {
@@ -20,7 +26,8 @@ namespace POS.Library
                 "4. Reset Shopping Cart",
                 "5. Leave POS Terminal");
             Console.WriteLine(menu);
-            UserOptions.GetMainMenuResponse();
+
+            running = UserOptions.GetMainMenuResponse();
         }
 
         public static void DisplayProductMenu()

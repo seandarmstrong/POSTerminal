@@ -9,19 +9,10 @@ namespace POS.Library
         public float Tender { get; private set; }
         public float Change { get; private set; }
         public float Total { get; set; }
-        Validator Validator = new Validator();
         // ctor
         public Cash()
         {
         }
-
-        //handle making change for the customer
-        //public string MakeChange(float total)
-        //{
-        //    var change = total - Tender;
-        //    return change.ToString("c2");
-        //}
-
         public void Transaction(float total)
         {
             // ask for and store user input
@@ -35,7 +26,7 @@ namespace POS.Library
                 var change = validTender - total;
                 // display the users change
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine(String.Format("Your change is {0}", Math.Round(change, 2)));
+                Console.WriteLine(String.Format("Your change is ${0}", Math.Round(change, 2)));
                 Console.ForegroundColor = ConsoleColor.White;
             }
             else
@@ -46,8 +37,6 @@ namespace POS.Library
                 Console.ForegroundColor = ConsoleColor.White;
                 Transaction(total);
             }
-            // convert user input to float
-            
         }
     }
 }
