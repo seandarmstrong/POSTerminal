@@ -126,22 +126,64 @@ namespace POS.Library
         }
         public static void ReceiptDisplay()
         {
-            var subTotal = 0f;
-            float salesTax = .06f;
+            _subTotal = 0f;
+            _salesTax = .06f;
 
             Console.WriteLine(RECEIPT_FORMAT, "Name", "Price", "Quantity", "Total");
             foreach (var product in orderList)
             {
                 Console.WriteLine(RECEIPT_FORMAT, product.Name, product.Price.ToString("C"), product.GetQuantity(), product.GetTotal().ToString("C"));
-                subTotal = subTotal + product.GetTotal();
+                _subTotal = _subTotal + product.GetTotal();
             }
 
-            float taxOnSale = subTotal * salesTax;
-            float grandTotal = (float)Math.Round(subTotal + taxOnSale, 2);
+            float taxOnSale = _subTotal * _salesTax;
+            float grandTotal = (float)Math.Round(_subTotal + taxOnSale, 2);
             Console.WriteLine("");
-            Console.WriteLine(MONEY_FORMAT, "Subtotal:", subTotal.ToString("C"));
+            Console.WriteLine(MONEY_FORMAT, "Subtotal:", _subTotal.ToString("C"));
             Console.WriteLine(MONEY_FORMAT, "Sales Tax:", taxOnSale.ToString("C"));
             Console.WriteLine(MONEY_FORMAT, "Grand Total:", grandTotal.ToString("C"));
         }
+        public static void ReceiptCash()
+        {
+            _subTotal = 0f;
+            _salesTax = .06f;
+            
+            Console.WriteLine(RECEIPT_FORMAT, "Name", "Price", "Quantity", "Total");
+            foreach (var product in orderList)
+            {
+                Console.WriteLine(RECEIPT_FORMAT, product.Name, product.Price.ToString("C"), product.GetQuantity(), product.GetTotal().ToString("C"));
+                _subTotal = _subTotal + product.GetTotal();
+            }
+            var cash = new Cash();
+            float taxOnSale = _subTotal * _salesTax;
+            float grandTotal = (float)Math.Round(_subTotal + taxOnSale, 2);
+            Console.WriteLine("");
+            Console.WriteLine(MONEY_FORMAT, "Subtotal:", _subTotal.ToString("C"));
+            Console.WriteLine(MONEY_FORMAT, "Sales Tax:", taxOnSale.ToString("C"));
+            Console.WriteLine(MONEY_FORMAT, "Grand Total:", grandTotal.ToString("C"));
+            Console.WriteLine($"You received {cash.Change}" );
+        }
+        public static void ReceiptCheck()
+        {
+
+            _subTotal = 0f;
+            _salesTax = .06f;
+
+            Console.WriteLine(RECEIPT_FORMAT, "Name", "Price", "Quantity", "Total");
+            foreach (var product in orderList)
+            {
+                Console.WriteLine(RECEIPT_FORMAT, product.Name, product.Price.ToString("C"), product.GetQuantity(), product.GetTotal().ToString("C"));
+                _subTotal = _subTotal + product.GetTotal();
+            }
+            var checkNumber = new Check();
+            float taxOnSale = _subTotal * _salesTax;
+            float grandTotal = (float)Math.Round(_subTotal + taxOnSale, 2);
+            Console.WriteLine("");
+            Console.WriteLine(MONEY_FORMAT, "Subtotal:", _subTotal.ToString("C"));
+            Console.WriteLine(MONEY_FORMAT, "Sales Tax:", taxOnSale.ToString("C"));
+            Console.WriteLine(MONEY_FORMAT, "Grand Total:", grandTotal.ToString("C"));
+            Console.WriteLine($"You payed with check # {checkNumber.CheckNumber}");
+        }
     }
 }
+       

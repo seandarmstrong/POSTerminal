@@ -108,16 +108,18 @@ namespace POS.Library
                         var cash = new Cash();
                         cash.Transaction(grandTotal);
                         Receipt.DisplayReceipt();
+                    Receipt.DisplayCash();
                         break;
                     case 2:
                         var check = new Check();
                         check.Transaction(grandTotal);
-                    Receipt.DisplayReceipt();
+                        Receipt.DisplayReceipt();
                     break;
                     case 3:
                         var cc = new CreditCard();
                         cc.Transaction(grandTotal);
-                    Receipt.DisplayReceipt();
+                        Receipt.DisplayReceipt();
+                        
                     break;
                     default:
                         Console.WriteLine("Sorry but that is not a payment option.");

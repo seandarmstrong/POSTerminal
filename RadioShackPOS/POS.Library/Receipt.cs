@@ -12,7 +12,13 @@ namespace POS.Library
         public static void DisplayReceipt()
         {
             Console.WriteLine("Thank you for shopping at RadioShack");
-            Order.ReceiptDisplay();
+            Order.ReceiptCheck();
+
+        }
+        public static void DisplayCash()
+        {
+
         }
     }
 }
+    
