@@ -8,12 +8,17 @@ namespace POS.Library
     public class Menu
     {
         private const string LIST_FORMAT = "{0, -4}{1, -20}{2, -25}{3, -10}{4,-5}";
+
+        //public static ProductList product = new ProductList();
+        //public static List<IProductModel> productList = product.BuildList();
+
         private static bool running = true;
 
         public static bool IsRunning()
         {
             return running;
         }
+
 
         public static void DisplayMainMenu()
         {
@@ -30,11 +35,8 @@ namespace POS.Library
             running = UserOptions.GetMainMenuResponse();
         }
 
-        public static void DisplayProductMenu()
+        /*public static void DisplayProductMenu()
         {
-
-            var menu = new ProductList();
-            List<IProductModel> productList = menu.BuildList();
             if (productList.Count > 0)
             {
                 Console.WriteLine(LIST_FORMAT, "", "Category", "Name", "Price", "Description");
@@ -46,7 +48,7 @@ namespace POS.Library
                         item.Price.ToString("C"), item.Description);
                 }
             }
-        }
+        }*/
 
         /*public static void DisplayCart()
         {
