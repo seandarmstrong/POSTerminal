@@ -45,7 +45,7 @@ namespace POS.Library
                 case 3:
                     if (order.GetOrderListCount() > 0)
                     {
-                        Order.CheckoutDisplay();
+                        order.CheckoutDisplay();
                         Menu.DisplayPayment();
                         order.ResetOrderList();
                     }

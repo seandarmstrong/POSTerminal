@@ -6,14 +6,14 @@ namespace POS.Library
     public class Order
     {
         private const string CART_FORMAT = "{0, -20}{1, -25}{2, -10}{3, -10}{4, -12}{5,-5}";
-        private const string MONEY_FORMAT = "{0,-15}{1,-12}";
+        private const string MONEY_FORMAT = "{0,-15}{1,12}";
         private const string LIST_FORMAT = "{0, -4}{1, -20}{2, -25}{3, -10}{4,-5}";
         private const string RECEIPT_FORMAT = "{0,-25}{1,-20}{2,-20}{3,-25}";
 
-        private static float _subTotal { get; set; }
-        private static float _salesTax = .06f;
-        private static float _grandTotal { get; set; }
-        private static float _taxOnSale { get; set; }
+        private float _subTotal { get; set; }
+        private float _salesTax = .06f;
+        private float _grandTotal { get; set; }
+        private float _taxOnSale { get; set; }
 
         public static List<OrderList> orderList = new List<OrderList>();
 
@@ -53,7 +53,7 @@ namespace POS.Library
             {
                 if (listOfProducts.IndexOf(product) == productIndex)
                 {
-                    Console.WriteLine("{0} of {1} have been added for a line total of {2:C}.", quantity, product.Name, quantity * product.Price);
+                    Console.WriteLine("{0} {1}(s) have been added for a line total of {2:C}.", quantity, product.Name, quantity * product.Price);
                 }
             }
         }
@@ -85,7 +85,7 @@ namespace POS.Library
             Console.ReadKey();
         }
 
-        public static void CheckoutDisplay()
+        public void CheckoutDisplay()
         {
             Console.WriteLine(CART_FORMAT, "Category", "Name", "Price", "Quantity", "Total", "Description");
             foreach (var product in orderList)
