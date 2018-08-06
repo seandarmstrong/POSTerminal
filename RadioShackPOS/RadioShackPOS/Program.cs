@@ -16,7 +16,6 @@ namespace RadioShackPOS
                 Menu.DisplayMainMenu();
             } while (Menu.IsRunning());
 
-            
         }
     }
 }
