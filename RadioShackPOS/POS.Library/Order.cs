@@ -116,7 +116,7 @@ namespace POS.Library
             _grandTotal = (float)Math.Round(_subTotal + _taxOnSale, 2);
             return _grandTotal;
         }
-        public static void ReceiptDisplay()
+        public void ReceiptDisplay()
 
         {
             var subTotal = 0f;
@@ -135,6 +135,7 @@ namespace POS.Library
             Console.WriteLine(MONEY_FORMAT, "Subtotal:", subTotal.ToString("C"));
             Console.WriteLine(MONEY_FORMAT, "Sales Tax:", taxOnSale.ToString("C"));
             Console.WriteLine(MONEY_FORMAT, "Grand Total:", grandTotal.ToString("C"));
+
             Console.WriteLine();
         }
     }

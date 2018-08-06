@@ -9,18 +9,18 @@ namespace POS.Library
 {
     public class Receipt
     {
-        public Check Check { get; set; }
-        public Cash Cash { get; set; }
-        public CreditCard CreditCard { get; set; }
-
-        public string GetCheckNumber()
-        {
-            return Check.CheckNumber;
-        }
-
         public void DisplayReceipt(Check check)
         {
-            Console.WriteLine(check.CheckNumber);
+            Console.WriteLine($"Total paid by check with check #{check.CheckNumber}");
+        }
+        public void DisplayReceipt(Cash cash)
+        {
+            Console.WriteLine("Total paid by cash. Your change was {0:C}", Math.Round(cash.Change, 2));
+        }
+        public void DisplayReceipt(CreditCard cc)
+        {
+            var lastFour = cc.CreditCardNumber.Substring(8, 4);
+            Console.WriteLine($"Total paid by credit card with credit card #xxxx-xxxx-xxxx-{lastFour}");
         }
 
         
