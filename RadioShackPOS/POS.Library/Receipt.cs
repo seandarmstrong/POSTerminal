@@ -7,12 +7,22 @@ using POS.Library;
 
 namespace POS.Library
 {
-    class Receipt
+    public class Receipt
     {
-        public static void DisplayReceipt()
+        public Check Check { get; set; }
+        public Cash Cash { get; set; }
+        public CreditCard CreditCard { get; set; }
+
+        public string GetCheckNumber()
         {
-            Console.WriteLine("Thank you for shopping at RadioShack");
-            Order.ReceiptDisplay();
+            return Check.CheckNumber;
         }
+
+        public void DisplayReceipt(Check check)
+        {
+            Console.WriteLine(check.CheckNumber);
+        }
+
+        
     }
 }
