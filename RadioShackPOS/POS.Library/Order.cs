@@ -124,11 +124,8 @@ namespace POS.Library
             {
                 Console.WriteLine(RECEIPT_FORMAT, product.Name, product.Price.ToString("C"), product.GetQuantity(), product.GetTotal().ToString("C"));
                 subTotal = subTotal + product.GetTotal();
-
-                
-
-                
             }
+
             float taxOnSale = subTotal * salesTax;
             float grandTotal = (float)Math.Round(subTotal + taxOnSale, 2);
             Console.WriteLine("");
