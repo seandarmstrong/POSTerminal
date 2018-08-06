@@ -64,6 +64,7 @@ namespace POS.Library
             if (UserOptions.ContinueAction(Console.ReadLine().ToLower().Trim()))
             {
                 orderList.Clear();
+                _subTotal = 0;
             }
         }
 
