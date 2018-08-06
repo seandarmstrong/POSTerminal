@@ -14,7 +14,7 @@ namespace RadioShackPOS
             do
             {
                 Menu.DisplayMainMenu();
-            } while (true);
+            } while (Menu.IsRunning());
 
             
         }

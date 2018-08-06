@@ -46,11 +46,11 @@
     <Compile Include="Interfaces\IProductModel.cs" />
     <Compile Include="OrderList.cs" />
     <Compile Include="ProductList.cs" />
-    <Compile Include="Products\Cable.cs" />
-    <Compile Include="Products\CarAccessory.cs" />
-    <Compile Include="Products\ElectronicDevice.cs" />
-    <Compile Include="Products\Phone.cs" />
-    <Compile Include="Products\Radio.cs" />
+    <Compile Include="Expandables\Products\Cable.cs" />
+    <Compile Include="Expandables\CarAccessory.cs" />
+    <Compile Include="Expandables\ElectronicDevice.cs" />
+    <Compile Include="Expandables\Products\Phone.cs" />
+    <Compile Include="Expandables\Products\Radio.cs" />
     <Compile Include="Transactions\Cash.cs" />
     <Compile Include="Transactions\Check.cs" />
     <Compile Include="Transactions\CreditCard.cs" />
