@@ -81,14 +81,24 @@ namespace POS.Library
             }
             else
             {
-                Console.WriteLine("That product number does not exist. Please try again:");
+                Console.Write("That product number does not exist. Please try again:");
                 return GetProductResponse(Console.ReadLine());
             }
         }
 
         public static int GetProductQuantity(string input)
         {
-            return Validator.ValidateUserInput(input);
+            int quantity = Validator.ValidateUserInput(input);
+            if (quantity > 0)
+            {
+                return quantity;
+            }
+            else
+            {
+                Console.Write("The quantity must be greater than 0. Please try again: ");
+                return GetProductQuantity(Console.ReadLine().Trim());
+            }
+
         }
 
         public static bool ContinueAction(string input)
