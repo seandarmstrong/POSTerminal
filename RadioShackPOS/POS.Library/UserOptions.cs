@@ -107,6 +107,7 @@ namespace POS.Library
                     case 1:
                         var cash = new Cash();
                         cash.Transaction(grandTotal);
+                        Receipt.DisplayReceipt();
                         break;
                     case 2:
                         var check = new Check();

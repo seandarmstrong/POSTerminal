@@ -22,7 +22,7 @@ namespace POS.Library
             try
             {
 
-                using (TextFieldParser parser = new TextFieldParser(seanPath))
+                using (TextFieldParser parser = new TextFieldParser(bradPath))
 
 
                 {
