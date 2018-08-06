@@ -54,7 +54,7 @@ namespace POS.Library
         public static int GetProductResponse()
         {
             Console.Write("Enter the product number that you would like to add to the order: ");
-            var selection = Convert.ToInt32(Console.ReadLine().Trim());
+            var selection = Validator.ValidateUserInput(Console.ReadLine());
             if (selection > 0 && selection <= ProductList.GetProductListCount())
             {
                 return selection;
