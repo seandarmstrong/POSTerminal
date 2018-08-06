@@ -7,7 +7,8 @@ namespace POS.Library
         public static void GetMainMenuResponse()
         {
             Console.Write("Please select from the main menu: ");
-            var userInput = int.Parse(Console.ReadLine());
+            int userInput = Validator.ValidateUserInput(Console.ReadLine());
+            
 
             switch (userInput)
             {

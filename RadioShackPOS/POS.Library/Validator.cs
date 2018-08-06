@@ -50,5 +50,20 @@ namespace POS.Library
             var regx = new Regex(@"^[0-9]+\.([0-9]{2})$");
             return regx.IsMatch(payment.ToString());
         }
+        public static int ValidateUserInput(string input)
+        {
+            int userInput;
+            bool success = int.TryParse(input, out userInput);
+
+            if (success == true)
+            {
+                return userInput;
+            }
+            else
+            {
+                Console.WriteLine("Please enter a valid option");
+                return ValidateUserInput(Console.ReadLine());
+            }
+        }
     }
 }
