@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using System.Globalization;
 
+
 namespace POS.Library
 {
     public class Validator
@@ -53,6 +54,11 @@ namespace POS.Library
         public static int ValidateUserInput(string input)
         {
             int userInput;
+            if (String.IsNullOrEmpty(input))
+            {
+                Console.WriteLine("That is not a valid input");
+                return ValidateUserInput(Console.ReadLine());
+            }
             bool success = int.TryParse(input, out userInput);
 
             if (success == true)
