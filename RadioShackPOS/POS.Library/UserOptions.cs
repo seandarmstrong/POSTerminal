@@ -43,6 +43,7 @@ namespace POS.Library
                     break;
 
                 case 3:
+                    Order.CheckoutDisplay();
                     Menu.DisplayPayment();
                     Order.ResetOrderList();
                     break;
@@ -99,30 +100,26 @@ namespace POS.Library
         }
         public static void GetPaymentOptions()
         {
-            float grandTotal;
-            //var grandTotal = Order.CheckoutDisplay();
+            var grandTotal = Order.GetGrandTotal();
             var userInput =  Validator.ValidateUserInput(Console.ReadLine());
             switch (userInput)
             {
-                case 1:
-                    var cash = new Cash();
-                    grandTotal = Order.CheckoutDisplay();
-                    cash.Transaction(grandTotal);
-                    break;
-                case 2:
-                    var check = new Check();
-                    grandTotal = Order.CheckoutDisplay();
-                    check.Transaction(grandTotal);
-                    break;
-                case 3:
-                    var cc = new CreditCard();
-                    grandTotal = Order.CheckoutDisplay();
-                    cc.Transaction(grandTotal);
-                    break;
-                default:
-                    Console.WriteLine("Sorry but that is not a payment option.");
-                    GetPaymentOptions();
-                    break;
+                    case 1:
+                        var cash = new Cash();
+                        cash.Transaction(grandTotal);
+                        break;
+                    case 2:
+                        var check = new Check();
+                        check.Transaction(grandTotal);
+                        break;
+                    case 3:
+                        var cc = new CreditCard();
+                        cc.Transaction(grandTotal);
+                        break;
+                    default:
+                        Console.WriteLine("Sorry but that is not a payment option.");
+                        GetPaymentOptions();
+                        break;
             }
         }
     }
