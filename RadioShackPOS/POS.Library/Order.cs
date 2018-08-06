@@ -64,6 +64,7 @@ namespace POS.Library
             if (UserOptions.ContinueAction(Console.ReadLine().ToLower().Trim()))
             {
                 orderList.Clear();
+                _subTotal = 0;
             }
         }
 
@@ -100,7 +101,7 @@ namespace POS.Library
             Console.WriteLine(MONEY_FORMAT, "Grand Total:", _grandTotal.ToString("C"));
         }
 
-        public static float GetGrandTotal()
+        public float GetGrandTotal()
         {
             _subTotal = 0f;
             _salesTax = .06f;
