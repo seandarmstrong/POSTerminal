@@ -35,8 +35,7 @@ namespace POS.Library
                     }
                     else
                     {
-                        Console.WriteLine(
-                            "There doesn't appear to anything in the cart. Please add products to view cart.");
+                        Console.WriteLine("There doesn't appear to anything in the cart. Please add products to view cart.");
                         Console.WriteLine("Press any key to continue...");
                         Console.ReadKey();
                     }
@@ -44,9 +43,19 @@ namespace POS.Library
                     break;
 
                 case 3:
-                    Order.CheckoutDisplay();
-                    Menu.DisplayPayment();
-                    order.ResetOrderList();
+                    if (order.GetOrderListCount() > 0)
+                    {
+                        Order.CheckoutDisplay();
+                        Menu.DisplayPayment();
+                        order.ResetOrderList();
+                    }
+                    else
+                    {
+                        Console.WriteLine("There doesn't appear to anything in the cart. Please add products to checkout.");
+                        Console.WriteLine("Press any key to continue...");
+                        Console.ReadKey();
+                    }
+
                     break;
                 case 4:
                     order.ResetOrderList();
@@ -104,28 +113,28 @@ namespace POS.Library
         {
             var order = new Order();
             var grandTotal = order.GetGrandTotal();
-            var userInput =  Validator.ValidateUserInput(Console.ReadLine());
+            var userInput = Validator.ValidateUserInput(Console.ReadLine());
             switch (userInput)
             {
-                    case 1:
-                        var cash = new Cash();
-                        cash.Transaction(grandTotal);
-                        Receipt.DisplayReceipt();
-                        break;
-                    case 2:
-                        var check = new Check();
-                        check.Transaction(grandTotal);
+                case 1:
+                    var cash = new Cash();
+                    cash.Transaction(grandTotal);
                     Receipt.DisplayReceipt();
                     break;
-                    case 3:
-                        var cc = new CreditCard();
-                        cc.Transaction(grandTotal);
+                case 2:
+                    var check = new Check();
+                    check.Transaction(grandTotal);
                     Receipt.DisplayReceipt();
                     break;
-                    default:
-                        Console.WriteLine("Sorry but that is not a payment option.");
-                        GetPaymentOptions();
-                        break;
+                case 3:
+                    var cc = new CreditCard();
+                    cc.Transaction(grandTotal);
+                    Receipt.DisplayReceipt();
+                    break;
+                default:
+                    Console.WriteLine("Sorry but that is not a payment option.");
+                    GetPaymentOptions();
+                    break;
             }
         }
     }
