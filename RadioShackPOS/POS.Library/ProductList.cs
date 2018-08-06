@@ -20,12 +20,8 @@ namespace POS.Library
             string[] fields;
             try
             {
-
-<<<<<<< HEAD
-                using (TextFieldParser parser = new TextFieldParser(bradPath))
-=======
+                //using (TextFieldParser parser = new TextFieldParser(bradPath))
                 using (TextFieldParser parser = new TextFieldParser(mikePath))
->>>>>>> master
 
 
                 {
