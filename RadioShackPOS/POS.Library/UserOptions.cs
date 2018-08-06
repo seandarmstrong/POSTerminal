@@ -44,6 +44,7 @@ namespace POS.Library
                     break;
 
                 case 3:
+                    Order.CheckoutDisplay();
                     Menu.DisplayPayment();
                     order.ResetOrderList();
                     break;
@@ -53,7 +54,6 @@ namespace POS.Library
                 case 5:
                     Console.WriteLine("Goodbye");
                     return false;
-                    break;
                 default:
                     Console.WriteLine("I'm sorry, that is not a valid response.");
                     break;
@@ -103,26 +103,29 @@ namespace POS.Library
         public static void GetPaymentOptions()
         {
             var order = new Order();
-            var grandTotal = order.CheckoutDisplay();
-            var userInput = Validator.ValidateUserInput(Console.ReadLine());
+            var grandTotal = order.GetGrandTotal();
+            var userInput =  Validator.ValidateUserInput(Console.ReadLine());
             switch (userInput)
             {
-                case 1:
-                    var cash = new Cash();
-                    cash.Transaction(grandTotal);
+                    case 1:
+                        var cash = new Cash();
+                        cash.Transaction(grandTotal);
+                        Receipt.DisplayReceipt();
+                        break;
+                    case 2:
+                        var check = new Check();
+                        check.Transaction(grandTotal);
+                    Receipt.DisplayReceipt();
                     break;
-                case 2:
-                    var check = new Check();
-                    check.Transaction(grandTotal);
+                    case 3:
+                        var cc = new CreditCard();
+                        cc.Transaction(grandTotal);
+                    Receipt.DisplayReceipt();
                     break;
-                case 3:
-                    var cc = new CreditCard();
-                    cc.Transaction(grandTotal);
-                    break;
-                default:
-                    Console.WriteLine("Sorry but that is not a payment option.");
-                    GetPaymentOptions();
-                    break;
+                    default:
+                        Console.WriteLine("Sorry but that is not a payment option.");
+                        GetPaymentOptions();
+                        break;
             }
         }
     }

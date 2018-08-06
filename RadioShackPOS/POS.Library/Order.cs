@@ -8,10 +8,12 @@ namespace POS.Library
         private const string CART_FORMAT = "{0, -20}{1, -25}{2, -10}{3, -10}{4, -12}{5,-5}";
         private const string MONEY_FORMAT = "{0,-15}{1,-12}";
         private const string LIST_FORMAT = "{0, -4}{1, -20}{2, -25}{3, -10}{4,-5}";
+        private const string RECEIPT_FORMAT = "{0,-25}{1,-20}{2,-20}{3,-25}";
 
-        private float _subTotal { get; set; }
-        private float _salesTax = .06f;
-        private float _grandTotal { get; set; }
+        private static float _subTotal { get; set; }
+        private static float _salesTax = .06f;
+        private static float _grandTotal { get; set; }
+        private static float _taxOnSale { get; set; }
 
         public static List<OrderList> orderList = new List<OrderList>();
 
@@ -67,41 +69,70 @@ namespace POS.Library
 
         public void ViewOrderCart()
         {
-            var subTotal = 0f;
+            _subTotal = 0f;
             Console.WriteLine("");
             Console.WriteLine(CART_FORMAT, "Category", "Name", "Price", "Quantity", "Total", "Description");
             foreach (var product in orderList)
             {
                 Console.WriteLine(CART_FORMAT, product.Category, product.Name, product.Price.ToString("C"), product.GetQuantity(), product.GetTotal().ToString("C"), product.Description);
-                subTotal = subTotal + product.GetTotal();
+                _subTotal = _subTotal + product.GetTotal();
             }
 
             Console.WriteLine("");
-            Console.WriteLine(MONEY_FORMAT, "Subtotal:", subTotal.ToString("C"));
+            Console.WriteLine(MONEY_FORMAT, "Subtotal:", _subTotal.ToString("C"));
             Console.WriteLine("Press any key to return to main menu.");
             Console.ReadKey();
         }
 
-        public float CheckoutDisplay()
+        public static void CheckoutDisplay()
         {
-            var subTotal = 0f;
-            float salesTax = .06f;
-
-
             Console.WriteLine(CART_FORMAT, "Category", "Name", "Price", "Quantity", "Total", "Description");
             foreach (var product in orderList)
             {
                 Console.WriteLine(CART_FORMAT, product.Category, product.Name, product.Price.ToString("C"), product.GetQuantity(), product.GetTotal().ToString("C"), product.Description);
+                _subTotal = _subTotal + product.GetTotal();
+            }
+            _taxOnSale = _subTotal * _salesTax;
+            _grandTotal = (float)Math.Round(_subTotal + _taxOnSale, 2);
+            Console.WriteLine("");
+            Console.WriteLine(MONEY_FORMAT, "Subtotal:", _subTotal.ToString("C"));
+            Console.WriteLine(MONEY_FORMAT, "Sales Tax:", _taxOnSale.ToString("C"));
+            Console.WriteLine(MONEY_FORMAT, "Grand Total:", _grandTotal.ToString("C"));
+        }
+
+        public static float GetGrandTotal()
+        {
+            _subTotal = 0f;
+            _salesTax = .06f;
+
+            foreach (var product in orderList)
+            {
+                //Console.WriteLine(CART_FORMAT, product.Category, product.Name, product.Price.ToString("C"), product.GetQuantity(), product.GetTotal().ToString("C"), product.Description);
+                _subTotal = _subTotal + product.GetTotal();
+            }
+            _taxOnSale = _subTotal * _salesTax;
+            _grandTotal = (float)Math.Round(_subTotal + _taxOnSale, 2);
+            return _grandTotal;
+        }
+        public static void ReceiptDisplay()
+
+        {
+            var subTotal = 0f;
+            float salesTax = .06f;
+
+            Console.WriteLine(RECEIPT_FORMAT, "Name", "Price", "Quantity", "Total");
+            foreach (var product in orderList)
+            {
+                Console.WriteLine(RECEIPT_FORMAT, product.Name, product.Price.ToString("C"), product.GetQuantity(), product.GetTotal().ToString("C"));
                 subTotal = subTotal + product.GetTotal();
             }
+
             float taxOnSale = subTotal * salesTax;
             float grandTotal = (float)Math.Round(subTotal + taxOnSale, 2);
-
             Console.WriteLine("");
             Console.WriteLine(MONEY_FORMAT, "Subtotal:", subTotal.ToString("C"));
             Console.WriteLine(MONEY_FORMAT, "Sales Tax:", taxOnSale.ToString("C"));
             Console.WriteLine(MONEY_FORMAT, "Grand Total:", grandTotal.ToString("C"));
-            return grandTotal;
         }
     }
 }

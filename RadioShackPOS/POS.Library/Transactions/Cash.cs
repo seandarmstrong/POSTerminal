@@ -8,7 +8,6 @@ namespace POS.Library
         // PROPS
         public float Tender { get; private set; }
         public float Change { get; private set; }
-        public float Total { get; set; }
         // ctor
         public Cash()
         {

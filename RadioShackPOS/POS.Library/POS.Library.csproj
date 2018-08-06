@@ -51,6 +51,7 @@
     <Compile Include="Expandables\ElectronicDevice.cs" />
     <Compile Include="Expandables\Products\Phone.cs" />
     <Compile Include="Expandables\Products\Radio.cs" />
+    <Compile Include="Receipt.cs" />
     <Compile Include="Transactions\Cash.cs" />
     <Compile Include="Transactions\Check.cs" />
     <Compile Include="Transactions\CreditCard.cs" />

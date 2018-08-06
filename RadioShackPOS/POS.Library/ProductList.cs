@@ -25,7 +25,9 @@ namespace POS.Library
             try
             {
 
+
                 using (TextFieldParser parser = new TextFieldParser(seanPath))
+
 
 
                 {
