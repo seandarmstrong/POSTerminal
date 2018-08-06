@@ -1,8 +1,8 @@
 ﻿using Microsoft.VisualBasic.FileIO;
+using POS.Library.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using POS.Library.Interfaces;
 
 namespace POS.Library
 {
@@ -13,19 +13,21 @@ namespace POS.Library
         readonly string seanPath = @"C:\Users\armst\Documents\Grand_Circus\POS_Terminal\POSTerminal\RadioShackPOS\POS.Library\products.csv";
         readonly string bradPath = @"C:\Users\frees\source\repos\POSTerminal\RadioShackPOS\POS.Library\products.csv";
 
-        public static List<IProductModel> productList = new List<IProductModel>();
-
-        public List<IProductModel> BuildList()
+        public ProductList()
         {
+
+        }
+
+        public List<IProductModel> GetProducts()
+        {
+            List<IProductModel> productList = new List<IProductModel>();
             string[] fields;
             try
             {
 
-<<<<<<< HEAD
-                using (TextFieldParser parser = new TextFieldParser(bradPath))
-=======
-                using (TextFieldParser parser = new TextFieldParser(mikePath))
->>>>>>> master
+
+                using (TextFieldParser parser = new TextFieldParser(seanPath))
+
 
 
                 {
@@ -36,6 +38,8 @@ namespace POS.Library
                         fields = parser.ReadFields();
                         productList.Add(new Product(fields[0], fields[1], Convert.ToSingle(fields[2]), fields[3]));
                     }
+
+
                 }
             }
             catch (FileNotFoundException)
@@ -46,9 +50,10 @@ namespace POS.Library
             return productList;
         }
 
-        public static int GetProductListCount()
+        public int GetProductListCount()
         {
-            return productList.Count;
+            var listOfProducts = this.GetProducts();
+            return listOfProducts.Count;
         }
     }
 }
