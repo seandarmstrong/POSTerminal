@@ -1,7 +1,4 @@
 ﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using POS.Library.Interfaces;
 
 namespace POS.Library
 {
@@ -9,8 +6,7 @@ namespace POS.Library
     {
         private const string LIST_FORMAT = "{0, -4}{1, -20}{2, -25}{3, -10}{4,-5}";
 
-        //public static ProductList product = new ProductList();
-        //public static List<IProductModel> productList = product.BuildList();
+        public static ProductList product = new ProductList();
 
         private static bool running = true;
 
@@ -31,34 +27,26 @@ namespace POS.Library
                 "4. Reset Shopping Cart",
                 "5. Leave POS Terminal");
             Console.WriteLine(menu);
-
-            running = UserOptions.GetMainMenuResponse();
+            var userOptions = new UserOptions();
+            running = userOptions.GetMainMenuResponse();
         }
 
-        /*public static void DisplayProductMenu()
+        public static void DisplayProductMenu()
         {
-            if (productList.Count > 0)
+            var productList = new ProductList();
+            var listOfProducts = productList.GetProducts();
+            if (listOfProducts.Count > 0)
             {
                 Console.WriteLine(LIST_FORMAT, "", "Category", "Name", "Price", "Description");
                 Console.WriteLine("");
 
-                foreach (var item in productList)
+                foreach (var item in listOfProducts)
                 {
-                    Console.WriteLine(LIST_FORMAT, (productList.IndexOf(item) + 1), item.Category, item.Name,
+                    Console.WriteLine(LIST_FORMAT, (listOfProducts.IndexOf(item) + 1), item.Category, item.Name,
                         item.Price.ToString("C"), item.Description);
                 }
             }
-        }*/
-
-        /*public static void DisplayCart()
-        {
-            int i = 0;
-            List<OrderList> cartList = Order.BuildOrderList(i);
-            for (i=0; i<cartList.Count; i++)
-            {
-                Console.WriteLine(cartList);
-            }
-        }*/
+        }
 
         public static void DisplayPayment()
         {

@@ -1,5 +1,4 @@
-﻿using POS.Library.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace POS.Library
@@ -17,31 +16,22 @@ namespace POS.Library
         private static float _taxOnSale { get; set; }
 
         public static List<OrderList> orderList = new List<OrderList>();
-        public static ProductList product = new ProductList();
-        public static List<IProductModel> productList = product.BuildList();
 
-        public static void DisplayProductMenu()
+        public ProductList Catalog;
+
+        public Order()
         {
-            if (productList.Count > 0)
-            {
-                Console.WriteLine(LIST_FORMAT, "", "Category", "Name", "Price", "Description");
-                Console.WriteLine("");
-
-                foreach (var item in productList)
-                {
-                    Console.WriteLine(LIST_FORMAT, (productList.IndexOf(item) + 1), item.Category, item.Name,
-                        item.Price.ToString("C"), item.Description);
-                }
-            }
+            Catalog = new ProductList();
         }
 
-        public static List<OrderList> BuildOrderList(int userInput, int quantity)
+        public List<OrderList> BuildOrderList(int userInput, int quantity)
         {
             var productIndex = userInput - 1;
+            var listOfProducts = Catalog.GetProducts();
 
-            foreach (var product in productList)
+            foreach (var product in listOfProducts)
             {
-                if (productList.IndexOf(product) == productIndex)
+                if (listOfProducts.IndexOf(product) == productIndex)
                 {
                     orderList.Add(new OrderList(product.Category, product.Name, product.Price, quantity, (quantity * product.Price), product.Description));
                 }
@@ -50,25 +40,25 @@ namespace POS.Library
             return orderList;
         }
 
-        public static int GetOrderListCount()
+        public int GetOrderListCount()
         {
             return orderList.Count;
         }
 
-        public static void ShowLineTotal(int userInput, int quantity)
+        public void ShowLineTotal(int userInput, int quantity)
         {
             var productIndex = userInput - 1;
-
-            foreach (var product in productList)
+            var listOfProducts = Catalog.GetProducts();
+            foreach (var product in listOfProducts)
             {
-                if (productList.IndexOf(product) == productIndex)
+                if (listOfProducts.IndexOf(product) == productIndex)
                 {
                     Console.WriteLine($"{quantity} of {product.Name} have been added for a line total of {quantity * product.Price}.");
                 }
             }
         }
 
-        public static void ResetOrderList()
+        public void ResetOrderList()
         {
             Console.WriteLine("Would you like to reset the cart for another transaction? (y/n)");
             if (UserOptions.ContinueAction(Console.ReadLine().ToLower().Trim()))
@@ -77,7 +67,7 @@ namespace POS.Library
             }
         }
 
-        public static void ViewOrderCart()
+        public void ViewOrderCart()
         {
             _subTotal = 0f;
             Console.WriteLine("");
@@ -110,7 +100,7 @@ namespace POS.Library
             Console.WriteLine(MONEY_FORMAT, "Grand Total:", _grandTotal.ToString("C"));
         }
 
-        public static float GetGrandTotal()
+        public float GetGrandTotal()
         {
             _subTotal = 0f;
             _salesTax = .06f;
@@ -125,6 +115,7 @@ namespace POS.Library
             return _grandTotal;
         }
         public static void ReceiptDisplay()
+
         {
             var subTotal = 0f;
             float salesTax = .06f;
