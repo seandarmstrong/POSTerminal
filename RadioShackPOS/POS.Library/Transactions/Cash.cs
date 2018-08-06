@@ -22,11 +22,16 @@ namespace POS.Library
             // the last two decimal places matter the most
             if (float.TryParse(tender, out float validTender) && validTender >= total)
             {
+                var receipt = new Receipt();
+                var receiptForOrder = new Order();
                 Change = validTender - total;
                 // display the users change
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(String.Format("Your change is ${0}", Math.Round(Change, 2)));
                 Console.ForegroundColor = ConsoleColor.White;
+                
+                receiptForOrder.ReceiptDisplay();
+                receipt.DisplayReceipt(this);
             }
             else
             {

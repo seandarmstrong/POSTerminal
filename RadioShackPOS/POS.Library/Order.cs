@@ -121,7 +121,9 @@ namespace POS.Library
         {
             var subTotal = 0f;
             float salesTax = .06f;
-
+            Console.WriteLine("\n===================== RECEIPT ============================");
+            Console.WriteLine("Thank you for shopping at Radio Shack! See you again soon!\n");
+            
             Console.WriteLine(RECEIPT_FORMAT, "Name", "Price", "Quantity", "Total");
             foreach (var product in orderList)
             {
