@@ -52,7 +52,7 @@ namespace POS.Library
             var regx = new Regex(@"^[0-9]+\.([0-9]{2})$");
             return regx.IsMatch(payment.ToString());
         }
-        public static int ValidateUserInput(string input)
+        public int ValidateUserInput(string input)
         {
             int userInput;
             if (String.IsNullOrEmpty(input))
