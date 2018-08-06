@@ -43,6 +43,7 @@ namespace POS.Library
                     break;
 
                 case 3:
+                    Order.CheckoutDisplay();
                     Menu.DisplayPayment();
                     Order.ResetOrderList();
                     break;
@@ -52,7 +53,6 @@ namespace POS.Library
                 case 5:
                     Console.WriteLine("Goodbye");
                     return false;
-                    break;
                 default:
                     Console.WriteLine("I'm sorry, that is not a valid response.");
                     break;
@@ -100,7 +100,7 @@ namespace POS.Library
         }
         public static void GetPaymentOptions()
         {
-            var grandTotal = Order.CheckoutDisplay();
+            var grandTotal = Order.GetGrandTotal();
             var userInput =  Validator.ValidateUserInput(Console.ReadLine());
             switch (userInput)
             {

@@ -5,7 +5,6 @@ namespace POS.Library
 {
     public class CreditCard : ICreditCardModel
     {
-        public float Total { get; set; }
         public string CreditCardNumber { get; private set; }
         public string ExpirationDate { get; private set; }
         public string CVV { get; private set; }
