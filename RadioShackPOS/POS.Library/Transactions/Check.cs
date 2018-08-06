@@ -16,14 +16,14 @@ namespace POS.Library
         public void Transaction(float total)
         {
             // prompt  user for check number
-            GetCheckNumber(total);
+            GetCheckNumber();
             // fancy pants success color and message
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Your check #{ CheckNumber } has been processed!");
             Console.ForegroundColor = ConsoleColor.White;
         }
 
-        public string GetCheckNumber(float total)
+        public string GetCheckNumber()
         {
             // ask for and store user checknumber
             Console.WriteLine("Please enter a check number (0000): ");
@@ -33,8 +33,13 @@ namespace POS.Library
             {
                 // call the method recursively if user input is invalid
                 Console.WriteLine("Please enter a valid check number in the form of 4 numbers (1234)");
-                GetCheckNumber(total);
+                GetCheckNumber();
             }
+            return CheckNumber;
+        }
+
+        public string UseCheckNumber()
+        {
             return CheckNumber;
         }
     }
