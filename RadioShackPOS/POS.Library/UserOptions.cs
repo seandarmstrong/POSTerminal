@@ -93,7 +93,7 @@ namespace POS.Library
         public static void GetPaymentOptions()
         {
             var grandTotal = Order.CheckoutDisplay();
-            var userInput = int.Parse(Console.ReadLine());
+            var userInput =  Validator.ValidateUserInput(Console.ReadLine());
             switch (userInput)
             {
                 case 1:
