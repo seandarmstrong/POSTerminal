@@ -7,7 +7,8 @@ namespace POS.Library
         public static void GetMainMenuResponse()
         {
             Console.Write("Please select from the main menu: ");
-            var userInput = int.Parse(Console.ReadLine());
+            int userInput = Validator.ValidateUserInput(Console.ReadLine());
+            
 
             switch (userInput)
             {
@@ -53,7 +54,7 @@ namespace POS.Library
         public static int GetProductResponse()
         {
             Console.Write("Enter the product number that you would like to add to the order: ");
-            var selection = Convert.ToInt32(Console.ReadLine().Trim());
+            var selection = Validator.ValidateUserInput(Console.ReadLine());
             if (selection > 0 && selection <= ProductList.GetProductListCount())
             {
                 return selection;
@@ -92,7 +93,7 @@ namespace POS.Library
         public static void GetPaymentOptions()
         {
             var grandTotal = Order.CheckoutDisplay();
-            var userInput = int.Parse(Console.ReadLine());
+            var userInput =  Validator.ValidateUserInput(Console.ReadLine());
             switch (userInput)
             {
                 case 1:

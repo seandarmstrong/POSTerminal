@@ -9,7 +9,8 @@ namespace POS.Library
     public class ProductList
     {
         // MIKE PATH .txt
-        readonly string mikePath = @"C:\Users\armst\Documents\Grand_Circus\POS_Terminal\POSTerminal\RadioShackPOS\POS.Library\products.csv";
+        //  readonly string mikePath = @"C:\Users\armst\Documents\Grand_Circus\POS_Terminal\POSTerminal\RadioShackPOS\POS.Library\products.csv";
+        readonly string bradPath = @"C:\Users\frees\source\repos\POSTerminal\RadioShackPOS\POS.Library\products.csv";
         public static List<IProductModel> productList = new List<IProductModel>();
 
         public List<IProductModel> BuildList()
@@ -18,7 +19,7 @@ namespace POS.Library
 
             try
             {
-                using (TextFieldParser parser = new TextFieldParser(mikePath)                )
+                using (TextFieldParser parser = new TextFieldParser(bradPath)                )
                 {
                     parser.TextFieldType = FieldType.Delimited;
                     parser.SetDelimiters(",");

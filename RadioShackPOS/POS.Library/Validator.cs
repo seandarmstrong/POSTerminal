@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace POS.Library
 {
@@ -16,6 +17,20 @@ namespace POS.Library
         {
             var regx = new Regex(@"^[0-9]{2}/[0-9]{2}$");
             return regx.IsMatch(expDate);
+        }
+        // checks if the cc date is is before todays date.
+        public bool PastDueDate(string expDate)
+        {
+            DateTime expirationDate = DateTime.ParseExact("expDate", "MMyy", CultureInfo.InvariantCulture);
+            Console.WriteLine(expirationDate + "and" + DateTime.Now);
+            if(expirationDate >= DateTime.Now)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         // validate cvv on credit card example(123)
         public bool ValidCVV(string cvv)
@@ -34,6 +49,21 @@ namespace POS.Library
         {
             var regx = new Regex(@"^[0-9]+\.([0-9]{2})$");
             return regx.IsMatch(payment.ToString());
+        }
+        public static int ValidateUserInput(string input)
+        {
+            int userInput;
+            bool success = int.TryParse(input, out userInput);
+
+            if (success == true)
+            {
+                return userInput;
+            }
+            else
+            {
+                Console.WriteLine("Please enter a valid option");
+                return ValidateUserInput(Console.ReadLine());
+            }
         }
     }
 }
