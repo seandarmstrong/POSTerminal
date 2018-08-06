@@ -9,20 +9,29 @@ namespace POS.Library
             Console.Write("Please select from the main menu: ");
             int userInput = Validator.ValidateUserInput(Console.ReadLine());
             var order = new Order();
-
+            var listCount = order.Catalog.GetProductListCount();
             switch (userInput)
             {
                 case 1:
                     Menu.DisplayProductMenu();
                     do
                     {
-                        Console.Write("Enter the product number that you would like to add to the order: ");
-                        var productNumber = GetProductResponse(Console.ReadLine());
-                        Console.Write("Enter the number of this product you would like to add to order: ");
-                        var quantity = GetProductQuantity(Console.ReadLine());
-                        order.BuildOrderList(productNumber, quantity);
-                        order.ShowLineTotal(productNumber, quantity);
-                        Console.Write("Would you like to add another product to the cart?(y/n): ");
+                        if (listCount <= 0)
+                        {
+                            Console.WriteLine("The file was not found at that location. Please call Technical Support @ 012-345-6789.");
+                            Console.ReadKey();
+                            return false;
+                        }
+                        else
+                        {
+                            Console.Write("Enter the product number that you would like to add to the order: ");
+                            var productNumber = GetProductResponse(Console.ReadLine());
+                            Console.Write("Enter the number of this product you would like to add to order: ");
+                            var quantity = GetProductQuantity(Console.ReadLine());
+                            order.BuildOrderList(productNumber, quantity);
+                            order.ShowLineTotal(productNumber, quantity);
+                            Console.Write("Would you like to add another product to the cart?(y/n): ");
+                        }
                     } while (ContinueAction(Console.ReadLine().Trim().ToLower()));
 
                     break;
@@ -61,6 +70,8 @@ namespace POS.Library
                     order.ResetOrderList();
                     break;
                 case 5:
+                    
+                    Console.ReadLine();
                     Console.WriteLine("Goodbye");
                     return false;
                 default:

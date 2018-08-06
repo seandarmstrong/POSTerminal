@@ -46,6 +46,7 @@ namespace POS.Library
                         item.Price.ToString("C"), item.Description);
                 }
             }
+            
         }
 
         public static void DisplayPayment()
