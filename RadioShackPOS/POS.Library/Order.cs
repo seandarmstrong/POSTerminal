@@ -8,6 +8,7 @@ namespace POS.Library
     {
         private const string CART_FORMAT = "{0, -20}{1, -25}{2, -10}{3, -10}{4, -12}{5,-5}";
         private const string MONEY_FORMAT = "{0,-15}{1,-12}";
+        private const string LIST_FORMAT = "{0, -4}{1, -20}{2, -25}{3, -10}{4,-5}";
 
         private float _subTotal { get; set; }
         private float _salesTax = .06f;
@@ -17,6 +18,20 @@ namespace POS.Library
         public static ProductList product = new ProductList();
         public static List<IProductModel> productList = product.BuildList();
 
+        public static void DisplayProductMenu()
+        {
+            if (productList.Count > 0)
+            {
+                Console.WriteLine(LIST_FORMAT, "", "Category", "Name", "Price", "Description");
+                Console.WriteLine("");
+
+                foreach (var item in productList)
+                {
+                    Console.WriteLine(LIST_FORMAT, (productList.IndexOf(item) + 1), item.Category, item.Name,
+                        item.Price.ToString("C"), item.Description);
+                }
+            }
+        }
 
         public static List<OrderList> BuildOrderList(int userInput, int quantity)
         {
@@ -38,6 +53,19 @@ namespace POS.Library
             return orderList.Count;
         }
 
+        public static void ShowLineTotal(int userInput, int quantity)
+        {
+            var productIndex = userInput - 1;
+
+            foreach (var product in productList)
+            {
+                if (productList.IndexOf(product) == productIndex)
+                {
+                    Console.WriteLine($"{quantity} of {product.Name} have been added for a line total of {quantity * product.Price}.");
+                }
+            }
+        }
+
         public static void ResetOrderList()
         {
             Console.WriteLine("Would you like to reset the cart for another transaction? (y/n)");
@@ -54,8 +82,8 @@ namespace POS.Library
             Console.WriteLine(CART_FORMAT, "Category", "Name", "Price", "Quantity", "Total", "Description");
             foreach (var product in orderList)
             {
-                Console.WriteLine(CART_FORMAT, product.Category, product.Name, product.Price.ToString("C"), product.Quantity, product.Total.ToString("C"), product.Description);
-                subTotal = subTotal + product.Total;
+                Console.WriteLine(CART_FORMAT, product.Category, product.Name, product.Price.ToString("C"), product.GetQuantity(), product.GetTotal().ToString("C"), product.Description);
+                subTotal = subTotal + product.GetTotal();
             }
 
             Console.WriteLine("");
@@ -73,8 +101,8 @@ namespace POS.Library
             Console.WriteLine(CART_FORMAT, "Category", "Name", "Price", "Quantity", "Total", "Description");
             foreach (var product in orderList)
             {
-                Console.WriteLine(CART_FORMAT, product.Category, product.Name, product.Price.ToString("C"), product.Quantity, product.Total.ToString("C"), product.Description);
-                subTotal = subTotal + product.Total;
+                Console.WriteLine(CART_FORMAT, product.Category, product.Name, product.Price.ToString("C"), product.GetQuantity(), product.GetTotal().ToString("C"), product.Description);
+                subTotal = subTotal + product.GetTotal();
             }
             float taxOnSale = subTotal * salesTax;
             float grandTotal = (float)Math.Round(subTotal + taxOnSale, 2);

@@ -8,7 +8,17 @@
             Total = total;
         }
 
-        public int Quantity { get; private set; }
-        public float Total { get; private set; }
+        private int Quantity { get; set; }
+        private float Total { get; set; }
+
+        public int GetQuantity()
+        {
+            return Quantity;
+        }
+
+        public float GetTotal()
+        {
+            return Total;
+        }
     }
 }

@@ -13,10 +13,15 @@ namespace POS.Library
             switch (userInput)
             {
                 case 1:
-                    Menu.DisplayProductMenu();
+                    Order.DisplayProductMenu();
                     do
                     {
-                        Order.BuildOrderList(GetProductResponse(), GetProductQuantity());
+                        Console.Write("Enter the product number that you would like to add to the order: ");
+                        var productNumber = GetProductResponse(Console.ReadLine());
+                        Console.Write("Enter the number of this product you would like to add to order: ");
+                        var quantity = GetProductQuantity(Console.ReadLine());
+                        Order.BuildOrderList(productNumber, quantity);
+                        Order.ShowLineTotal(productNumber, quantity);
                         Console.Write("Would you like to add another product to the cart?(y/n): ");
                     } while (ContinueAction(Console.ReadLine().Trim().ToLower()));
                     break;
@@ -51,25 +56,23 @@ namespace POS.Library
             }
         }
 
-        public static int GetProductResponse()
+        public static int GetProductResponse(string input)
         {
-            Console.Write("Enter the product number that you would like to add to the order: ");
-            var selection = Validator.ValidateUserInput(Console.ReadLine());
+            var selection = Validator.ValidateUserInput(input);
             if (selection > 0 && selection <= ProductList.GetProductListCount())
             {
                 return selection;
             }
             else
             {
-                Console.WriteLine("That product number does not exist. Please try again.\n");
-                return GetProductResponse();
+                Console.WriteLine("That product number does not exist. Please try again:");
+                return GetProductResponse(Console.ReadLine());
             }
         }
 
-        public static int GetProductQuantity()
+        public static int GetProductQuantity(string input)
         {
-            Console.Write("Enter the number of this product you would like to add to order: ");
-            return Convert.ToInt32(Console.ReadLine().Trim());
+            return Validator.ValidateUserInput(input);
         }
 
         public static bool ContinueAction(string input)
