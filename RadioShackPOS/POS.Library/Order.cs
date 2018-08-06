@@ -182,7 +182,7 @@ namespace POS.Library
             Console.WriteLine(MONEY_FORMAT, "Subtotal:", _subTotal.ToString("C"));
             Console.WriteLine(MONEY_FORMAT, "Sales Tax:", taxOnSale.ToString("C"));
             Console.WriteLine(MONEY_FORMAT, "Grand Total:", grandTotal.ToString("C"));
-            Console.WriteLine($"You payed with check # {checkNumber.CheckNumber}");
+            Console.WriteLine($"You payed with check # {checkNumber}");
         }
     }
 }
