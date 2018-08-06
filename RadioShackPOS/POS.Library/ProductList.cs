@@ -21,7 +21,11 @@ namespace POS.Library
             try
             {
 
+<<<<<<< HEAD
+                using (TextFieldParser parser = new TextFieldParser(bradPath))
+=======
                 using (TextFieldParser parser = new TextFieldParser(mikePath))
+>>>>>>> master
 
 
                 {

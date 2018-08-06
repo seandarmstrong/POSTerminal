@@ -9,6 +9,7 @@ namespace POS.Library
         private const string CART_FORMAT = "{0, -20}{1, -25}{2, -10}{3, -10}{4, -12}{5,-5}";
         private const string MONEY_FORMAT = "{0,-15}{1,-12}";
         private const string LIST_FORMAT = "{0, -4}{1, -20}{2, -25}{3, -10}{4,-5}";
+        private const string RECEIPT_FORMAT = "{0,-25}{1,-20}{2,-20}{3,-25}";
 
         private static float _subTotal { get; set; }
         private static float _salesTax = .06f;
@@ -122,6 +123,25 @@ namespace POS.Library
             _taxOnSale = _subTotal * _salesTax;
             _grandTotal = (float)Math.Round(_subTotal + _taxOnSale, 2);
             return _grandTotal;
+        }
+        public static void ReceiptDisplay()
+        {
+            var subTotal = 0f;
+            float salesTax = .06f;
+
+            Console.WriteLine(RECEIPT_FORMAT, "Name", "Price", "Quantity", "Total");
+            foreach (var product in orderList)
+            {
+                Console.WriteLine(RECEIPT_FORMAT, product.Name, product.Price.ToString("C"), product.GetQuantity(), product.GetTotal().ToString("C"));
+                subTotal = subTotal + product.GetTotal();
+            }
+
+            float taxOnSale = subTotal * salesTax;
+            float grandTotal = (float)Math.Round(subTotal + taxOnSale, 2);
+            Console.WriteLine("");
+            Console.WriteLine(MONEY_FORMAT, "Subtotal:", subTotal.ToString("C"));
+            Console.WriteLine(MONEY_FORMAT, "Sales Tax:", taxOnSale.ToString("C"));
+            Console.WriteLine(MONEY_FORMAT, "Grand Total:", grandTotal.ToString("C"));
         }
     }
 }
