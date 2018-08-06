@@ -125,14 +125,16 @@ namespace POS.Library
                 Console.WriteLine(RECEIPT_FORMAT, product.Name, product.Price.ToString("C"), product.GetQuantity(), product.GetTotal().ToString("C"));
                 subTotal = subTotal + product.GetTotal();
 
-                float taxOnSale = subTotal * salesTax;
-                float grandTotal = (float)Math.Round(subTotal + taxOnSale, 2);
+                
 
-                Console.WriteLine("");
-                Console.WriteLine(MONEY_FORMAT, "Subtotal:", subTotal.ToString("C"));
-                Console.WriteLine(MONEY_FORMAT, "Sales Tax:", taxOnSale.ToString("C"));
-                Console.WriteLine(MONEY_FORMAT, "Grand Total:", grandTotal.ToString("C"));
+                
             }
+            float taxOnSale = subTotal * salesTax;
+            float grandTotal = (float)Math.Round(subTotal + taxOnSale, 2);
+            Console.WriteLine("");
+            Console.WriteLine(MONEY_FORMAT, "Subtotal:", subTotal.ToString("C"));
+            Console.WriteLine(MONEY_FORMAT, "Sales Tax:", taxOnSale.ToString("C"));
+            Console.WriteLine(MONEY_FORMAT, "Grand Total:", grandTotal.ToString("C"));
         }
     }
 }
