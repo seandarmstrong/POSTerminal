@@ -16,6 +16,7 @@ namespace POS.Library
         private static float _grandTotal { get; set; }
         private static float _taxOnSale { get; set; }
 
+
         public static List<OrderList> orderList = new List<OrderList>();
         public static ProductList product = new ProductList();
         public static List<IProductModel> productList = product.BuildList();
@@ -143,7 +144,7 @@ namespace POS.Library
             Console.WriteLine(MONEY_FORMAT, "Sales Tax:", taxOnSale.ToString("C"));
             Console.WriteLine(MONEY_FORMAT, "Grand Total:", grandTotal.ToString("C"));
         }
-        public static void ReceiptCash()
+        /*public static void ReceiptCash()
         {
             _subTotal = 0f;
             _salesTax = .06f;
@@ -163,7 +164,8 @@ namespace POS.Library
             Console.WriteLine(MONEY_FORMAT, "Grand Total:", grandTotal.ToString("C"));
             Console.WriteLine($"You received {cash.Change}" );
         }
-        public static void ReceiptCheck()
+
+        public static void ReceiptCheck(Check check)
         {
 
             _subTotal = 0f;
@@ -175,15 +177,14 @@ namespace POS.Library
                 Console.WriteLine(RECEIPT_FORMAT, product.Name, product.Price.ToString("C"), product.GetQuantity(), product.GetTotal().ToString("C"));
                 _subTotal = _subTotal + product.GetTotal();
             }
-            var checkNumber = new Check();
             float taxOnSale = _subTotal * _salesTax;
             float grandTotal = (float)Math.Round(_subTotal + taxOnSale, 2);
             Console.WriteLine("");
             Console.WriteLine(MONEY_FORMAT, "Subtotal:", _subTotal.ToString("C"));
             Console.WriteLine(MONEY_FORMAT, "Sales Tax:", taxOnSale.ToString("C"));
             Console.WriteLine(MONEY_FORMAT, "Grand Total:", grandTotal.ToString("C"));
-            Console.WriteLine($"You payed with check # {checkNumber}");
-        }
+            Console.WriteLine($"You payed with check # {check.CheckNumber}");
+        }*/
     }
 }
        

@@ -5,7 +5,7 @@ namespace POS.Library
     public class Check : ICheckModel
     {
         
-        public string CheckNumber { get; private set; }
+        public string CheckNumber { get;  private set; }
 
         Validator Validator = new Validator();
         // ctor
