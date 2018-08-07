@@ -20,12 +20,17 @@ namespace POS.Library
             return regx.IsMatch(expDate);
         }
         // checks if the cc date is is before todays date.
-        public bool PastDueDate(DateTime expDate)
+        public bool PastDueDate(string expDate)
         {
-            //DateTime expirationDate = DateTime.ParseExact("expDate", "MMyy", CultureInfo.InvariantCulture);
-            //Console.WriteLine(expirationDate + "and" + DateTime.Now);
-            var expired = DateTime.Compare(expDate, DateTime.Now);
-            if(expired >= 0)
+            string[] temp = expDate.Split('/');
+            string sMM = temp[0];
+            string sYY = temp[1];
+            int iMM = int.Parse(sMM);
+            int iYY = int.Parse(sYY);
+
+            DateTime expirationDate = new DateTime(iYY,iMM,01).AddMonths(1).AddDays(-1).AddYears(2000);
+            var expired = DateTime.Compare(expirationDate, DateTime.Now);
+            if(expired < 0)
             {
                 return false;
             }

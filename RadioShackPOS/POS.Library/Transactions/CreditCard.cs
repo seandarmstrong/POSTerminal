@@ -45,6 +45,7 @@ namespace POS.Library
             // ask for and store user input
             Console.Write("Please enter the expiration date (MM/YY): ");
             ExpirationDate = Console.ReadLine();
+<<<<<<< HEAD
             /*if (DateTime.TryParse(ExpirationDate, out DateTime validExpDate))
             {
             }*/
@@ -65,7 +66,20 @@ namespace POS.Library
             }
             
             
+=======
+            if (!Validator.ValidExpDate(ExpirationDate))
+            {
+                Console.WriteLine("That is not a valid date");
+                AskForExpDate();
+            }
+>>>>>>> b1652f03b269c310dd2b4004c3b9c55ade73947b
 
+            if (!Validator.PastDueDate(ExpirationDate))
+            {
+                Console.WriteLine("Your card has expired. Please enter a new date");
+                AskForExpDate();
+            }
+            return ExpirationDate;
         }
         // if input is invalid display error
         // and call the method recursively
