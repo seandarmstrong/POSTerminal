@@ -23,7 +23,8 @@ namespace POS.Library
             string[] fields;
             try
             {
-                using (TextFieldParser parser = new TextFieldParser(bradPath))
+                using (TextFieldParser parser = new TextFieldParser(seanPath))
+
                 {
                     parser.TextFieldType = FieldType.Delimited;
                     parser.SetDelimiters(",");
@@ -38,7 +39,7 @@ namespace POS.Library
             }
             catch (FileNotFoundException)
             {
-                
+
             }
 
             return productList;

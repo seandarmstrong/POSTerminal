@@ -3,12 +3,27 @@ using System;
 
 namespace POS.Library
 {
-    public class UserOptions
+    public class UserOption
     {
         public Validator validate = new Validator();
+        public Order order = new Order();
+
         public bool GetMainMenuResponse()
         {
             Console.Write("Please select from the main menu: ");
+<<<<<<< HEAD:RadioShackPOS/POS.Library/UserOption.cs
+            int userInput = validate.ValidateUserInput(Console.ReadLine());
+            switch (userInput)
+            {
+                case 1:
+                    HandleAddProduct();
+                    break;
+                case 2:
+                    HandleViewCart();
+                    break;
+                case 3:
+                    HandleCheckout();
+=======
             int userInput = validate.IsValidateUserInput(Console.ReadLine());
             var order = new Order();
 
@@ -71,11 +86,16 @@ namespace POS.Library
                         Console.ReadKey();
                     }
 
+>>>>>>> master:RadioShackPOS/POS.Library/UserOptions.cs
                     break;
                 case (int)MainMenu.EmptyCart:
                     order.ResetOrderList();
                     break;
+<<<<<<< HEAD:RadioShackPOS/POS.Library/UserOption.cs
+                case 5:
+=======
                 case (int)MainMenu.Quit:
+>>>>>>> master:RadioShackPOS/POS.Library/UserOptions.cs
                     Console.WriteLine("Goodbye");
                     return false;
                 default:
@@ -85,18 +105,68 @@ namespace POS.Library
             return true;
         }
 
-        public int GetProductResponse(string input)
+        public void HandleAddProduct()
         {
-            var product = new ProductList();
-            var selection = validate.IsValidateUserInput(input);
-            if (selection > 0 && selection <= product.GetProductListCount())
+<<<<<<< HEAD:RadioShackPOS/POS.Library/UserOption.cs
+            var menu = new Menu();
+            var listCount = order.Catalog.GetProductListCount();
+            menu.DisplayProductMenu();
+            do
             {
-                return selection;
+                if (listCount <= 0)
+                {
+                    Console.WriteLine(
+                        "The file was not found at that location. Please call Technical Support @ 012-345-6789.");
+                    Console.ReadKey();
+                    break;
+                }
+                else
+                {
+                    Console.Write("Enter the product number that you would like to add to the order: ");
+                    var productNumber = validate.ValidateProductResponse(Console.ReadLine());
+                    Console.Write("Enter the number of this product you would like to add to order: ");
+                    var quantity = GetProductQuantity(Console.ReadLine());
+                    order.BuildOrderList(productNumber, quantity);
+                    order.ShowLineTotal(productNumber, quantity);
+                    Console.Write("Would you like to add another product to the cart?(y/n): ");
+                }
+            } while (ContinueAction(Console.ReadLine().Trim().ToLower()));
+
+        }
+
+        public void HandleViewCart()
+        {
+            if (order.GetOrderListCount() > 0)
+            {
+                order.ViewOrderCart();
             }
             else
             {
-                Console.Write("That product number does not exist. Please try again:");
-                return GetProductResponse(Console.ReadLine());
+                Console.WriteLine("There doesn't appear to anything in the cart. Please add products to view cart.");
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
+            }
+        }
+
+        public void HandleCheckout()
+        {
+            var menu = new Menu();
+            if (order.GetOrderListCount() > 0)
+=======
+            var product = new ProductList();
+            var selection = validate.IsValidateUserInput(input);
+            if (selection > 0 && selection <= product.GetProductListCount())
+>>>>>>> master:RadioShackPOS/POS.Library/UserOptions.cs
+            {
+                order.CheckoutDisplay();
+                menu.DisplayPayment();
+                order.ResetOrderList();
+            }
+            else
+            {
+                Console.WriteLine("There doesn't appear to anything in the cart. Please add products to checkout.");
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
             }
         }
 
@@ -145,6 +215,11 @@ namespace POS.Library
                 case (int)PayOptions.Cash:
                     var cash = new Cash();
                     cash.Transaction(grandTotal);
+<<<<<<< HEAD:RadioShackPOS/POS.Library/UserOption.cs
+                    receipt.DisplayReceipt(cash);
+                    //receiptForOrder.ReceiptDisplay();
+=======
+>>>>>>> master:RadioShackPOS/POS.Library/UserOptions.cs
                     break;
                 case (int)PayOptions.Check:
                     var check = new Check();
