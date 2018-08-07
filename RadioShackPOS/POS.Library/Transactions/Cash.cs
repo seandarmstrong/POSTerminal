@@ -6,7 +6,8 @@ namespace POS.Library
     {
         
         // PROPS
-        public float Tender { get; private set; }
+        public float Tender => 0;
+
         public float Change { get; private set; }
         // ctor
         public Cash()
@@ -27,9 +28,9 @@ namespace POS.Library
                 Change = Tender - total;
                 // display the users change
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine(String.Format("Your change is ${0}", Math.Round(Change, 2)));
+                Console.WriteLine($"Your change is ${Math.Round(Change, 2)}");
                 Console.ForegroundColor = ConsoleColor.White;
-                
+                // display receipt and payment method
                 receiptForOrder.ReceiptDisplay();
                 receipt.DisplayReceipt(this);
             }

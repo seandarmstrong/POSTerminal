@@ -1,4 +1,5 @@
-﻿using System;
+﻿using POS.Library.Enums;
+using System;
 
 namespace POS.Library
 {
@@ -8,7 +9,7 @@ namespace POS.Library
         public bool GetMainMenuResponse()
         {
             Console.Write("Please select from the main menu: ");
-            int userInput = validate.ValidateUserInput(Console.ReadLine());
+            int userInput = validate.IsValidateUserInput(Console.ReadLine());
             var order = new Order();
 
             var menu = new Menu();
@@ -17,7 +18,7 @@ namespace POS.Library
 
             switch (userInput)
             {
-                case 1:
+                case (int)MainMenu.ProductList:
                     menu.DisplayProductMenu();
                     do
                     {
@@ -41,7 +42,7 @@ namespace POS.Library
 
                     break;
 
-                case 2:
+                case (int)MainMenu.ShowCart:
 
                     if (order.GetOrderListCount() > 0)
                     {
@@ -56,7 +57,7 @@ namespace POS.Library
 
                     break;
 
-                case 3:
+                case (int)MainMenu.Checkout:
                     if (order.GetOrderListCount() > 0)
                     {
                         order.CheckoutDisplay();
@@ -71,26 +72,23 @@ namespace POS.Library
                     }
 
                     break;
-                case 4:
+                case (int)MainMenu.EmptyCart:
                     order.ResetOrderList();
                     break;
-                case 5:
-                    
-                    Console.ReadLine();
+                case (int)MainMenu.Quit:
                     Console.WriteLine("Goodbye");
                     return false;
                 default:
                     Console.WriteLine("I'm sorry, that is not a valid response.");
                     break;
             }
-
             return true;
         }
 
         public int GetProductResponse(string input)
         {
             var product = new ProductList();
-            var selection = validate.ValidateUserInput(input);
+            var selection = validate.IsValidateUserInput(input);
             if (selection > 0 && selection <= product.GetProductListCount())
             {
                 return selection;
@@ -104,7 +102,7 @@ namespace POS.Library
 
         public int GetProductQuantity(string input)
         {
-            int quantity = validate.ValidateUserInput(input);
+            int quantity = validate.IsValidateUserInput(input);
             if (quantity > 0)
             {
                 return quantity;
@@ -141,26 +139,20 @@ namespace POS.Library
             var receiptForOrder = new Order();
             var order = new Order();
             var grandTotal = order.GetGrandTotal();
-            var userInput = validate.ValidateUserInput(Console.ReadLine());
+            var userInput = validate.IsValidateUserInput(Console.ReadLine());
             switch (userInput)
             {
-                case 1:
+                case (int)PayOptions.Cash:
                     var cash = new Cash();
                     cash.Transaction(grandTotal);
-                    //receipt.DisplayReceipt(cash);
-                    //receiptForOrder.ReceiptDisplay();
                     break;
-                case 2:
+                case (int)PayOptions.Check:
                     var check = new Check();
                     check.Transaction(grandTotal);
-                    receipt.DisplayReceipt(check);
-                    receiptForOrder.ReceiptDisplay();
                     break;
-                case 3:
+                case (int)PayOptions.CreditCard:
                     var cc = new CreditCard();
                     cc.Transaction(grandTotal);
-                    receipt.DisplayReceipt(cc);
-                    receiptForOrder.ReceiptDisplay();
                     break;
                 default:
                     Console.WriteLine("Sorry but that is not a payment option.");
