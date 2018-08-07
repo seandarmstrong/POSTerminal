@@ -53,12 +53,6 @@ namespace POS.Library
             return regx.IsMatch(checkNumber);
         }
 
-        public bool ValidateCashFormat(string payment)
-        {
-            var regx = new Regex(@"^[0-9]+\.([0-9]{2})$");
-            return regx.IsMatch(payment.ToString());
-        }
-
         public int ValidateUserInput(string input)
         {
             int userInput;
