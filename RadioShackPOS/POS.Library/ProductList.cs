@@ -8,11 +8,6 @@ namespace POS.Library
 {
     public class ProductList
     {
-
-        private readonly string mikePath = @"C:\Users\Mozzey\GrandCircus\Midterm\POSTerminal\RadioShackPOS\POS.Library\products.csv";
-        readonly string seanPath = @"C:\Users\armst\Documents\Grand_Circus\POS_Terminal\POSTerminal\RadioShackPOS\POS.Library\products.csv";
-        readonly string bradPath = @"C:\Users\frees\source\repos\POSTerminal\RadioShackPOS\POS.Library\products.csv";
-
         //constructor
         public ProductList()
         {
