@@ -22,7 +22,7 @@ namespace POS.Library
 
             var menu = String.Format("\n{0}\n{1}\n{2}\n{3}\n{4}\n{5}",
                 "What would you like to do?",
-                "1. View products",
+                "1. View Products",
                 "2. View Cart",
                 "3. Checkout",
                 "4. Reset Shopping Cart",

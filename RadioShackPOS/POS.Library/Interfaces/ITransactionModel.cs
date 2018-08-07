@@ -2,8 +2,6 @@
 {
     public interface ITransactionModel
     {
-
         void Transaction(float Total);
-
     }
 }

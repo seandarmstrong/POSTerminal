@@ -120,7 +120,6 @@ namespace POS.Library
                 Console.Write("The quantity must be greater than 0. Please try again: ");
                 return GetProductQuantity(Console.ReadLine().Trim());
             }
-
         }
 
         //this function determines if the user wants to add another product or return back to the main menu

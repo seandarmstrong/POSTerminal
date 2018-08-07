@@ -8,8 +8,10 @@ namespace POS.Library
         public string CheckNumber { get; private set; }
 
         readonly Validator Validator = new Validator();
+
         // ctor
         public Check() { }
+
         // main check transaction method
         public void Transaction(float total)
         {

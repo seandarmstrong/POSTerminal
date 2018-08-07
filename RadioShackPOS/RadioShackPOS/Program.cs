@@ -1,6 +1,4 @@
 ﻿using POS.Library;
-using POS.Library.Transactions;
-using POS.Library.Products;
 using System;
 
 namespace RadioShackPOS
@@ -16,7 +14,6 @@ namespace RadioShackPOS
             {
                 menu.DisplayMainMenu();
             } while (menu.IsRunning());
-
         }
     }
 }

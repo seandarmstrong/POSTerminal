@@ -9,10 +9,12 @@ namespace POS.Library
         public string Tender { get; private set; }
 
         public float Change { get; private set; }
+
         // ctor
         public Cash()
         {
         }
+
         public void Transaction(float total)
         {
             // ask for and store user input

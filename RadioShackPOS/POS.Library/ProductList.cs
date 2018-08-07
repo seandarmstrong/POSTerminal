@@ -26,7 +26,7 @@ namespace POS.Library
             string[] fields;
             try
             {
-                using (TextFieldParser parser = new TextFieldParser(seanPath))
+                using (TextFieldParser parser = new TextFieldParser(@"C:\Users\armst\Documents\Grand_Circus\POS_Terminal\POSTerminal\RadioShackPOS\POS.Library\products.csv"))
                 {
                     parser.TextFieldType = FieldType.Delimited;
                     parser.SetDelimiters(",");
@@ -35,8 +35,6 @@ namespace POS.Library
                         fields = parser.ReadFields();
                         productList.Add(new Product(fields[0], fields[1], Convert.ToSingle(fields[2]), fields[3]));
                     }
-
-
                 }
             }
             catch (FileNotFoundException)

@@ -132,7 +132,7 @@ namespace POS.Library
             var subTotal = 0f;
             float salesTax = .06f;
             Console.WriteLine("\n================================ RECEIPT =================================");
-            Console.WriteLine("Thank you for shopping at Radio Shack! See you again soon!\n");
+            Console.WriteLine("Thank you for shopping at RadioShack! See you again soon!\n");
 
             Console.WriteLine(RECEIPT_FORMAT, "Name", "Price", "Quantity", "Total");
             foreach (var product in orderList)
@@ -148,7 +148,6 @@ namespace POS.Library
             Console.WriteLine(MONEY_FORMAT, "Sales Tax:", taxOnSale.ToString("C"));
             Console.WriteLine(MONEY_FORMAT, "Grand Total:", grandTotal.ToString("C"));
             Console.WriteLine("============================================================================");
-            Console.WriteLine();
         }
     }
 }

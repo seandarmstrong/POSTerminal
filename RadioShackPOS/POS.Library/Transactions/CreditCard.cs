@@ -8,11 +8,13 @@ namespace POS.Library
         public string CreditCardNumber { get; private set; }
         public string ExpirationDate { get; private set; }
         public string CVV { get; private set; }
+
         // Validator == Validator
         Validator Validator = new Validator();
 
         // ctor
         public CreditCard() { }
+
         // main methood for handling credit card transactions
         public void Transaction(float total)
         {
@@ -30,15 +32,17 @@ namespace POS.Library
             Console.WriteLine($"Your purchase for {total.ToString("C")} has been completed!");
             Console.ForegroundColor = ConsoleColor.White;
             // display receipt and payment method
-            receipt.DisplayReceipt(this);
             receiptForOrder.GetReceiptDisplay();
+            receipt.DisplayReceipt(this);
+
         }
+
         // method to recursively ask for cc number if it is invalid
         public string AskForCCNumber()
         {
             // ask for and store user input
             Console.Write("Please enter your credit card number ('1234123412341234 or 1234 1234 1234 1234'): ");
-            CreditCardNumber = Console.ReadLine();
+            CreditCardNumber = Console.ReadLine().Replace(" ", string.Empty).Trim();
             // if input is invalid display error
             // and call the method recursively
             if (!Validator.ValidateCCNumber(CreditCardNumber))
@@ -48,6 +52,7 @@ namespace POS.Library
             }
             return CreditCardNumber;
         }
+
         // method to recursively ask for cc expiration date if it is invalid
         public string AskForExpDate()
         {
@@ -68,6 +73,7 @@ namespace POS.Library
             }
             return ExpirationDate;
         }
+
         // method to recursively ask for cvv number if it is invalid
         public string AskForCVV()
         {
