@@ -42,9 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\MainMenu.cs" />
     <Compile Include="Interfaces\ICashModel.cs" />
     <Compile Include="Interfaces\IProductModel.cs" />
     <Compile Include="OrderList.cs" />
+    <Compile Include="Enums\PayOptions.cs" />
     <Compile Include="ProductList.cs" />
     <Compile Include="Expandables\Products\Cable.cs" />
     <Compile Include="Expandables\CarAccessory.cs" />

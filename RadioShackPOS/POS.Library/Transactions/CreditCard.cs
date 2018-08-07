@@ -4,25 +4,34 @@ namespace POS.Library
 {
     public class CreditCard : ICreditCardModel
     {
+        // PROPS
         public string CreditCardNumber { get; private set; }
         public string ExpirationDate { get; private set; }
         public string CVV { get; private set; }
-
+        // Validator == Validator
         Validator Validator = new Validator();
 
         // ctor
-        public CreditCard()
-        {
-        }
+        public CreditCard() { }
         // main methood for handling credit card transactions
         public void Transaction(float total)
         {
+            // instantiate a new recpeit and order for the transaction
+            var receipt = new Receipt();
+            var receiptForOrder = new Order();
+            // ask for cc number and validate it
             AskForCCNumber();
+            // ask for expiration date - must not expire before DateTime.Now
             AskForExpDate();
+            // ask for cvv and validate
             AskForCVV();
             Console.ForegroundColor = ConsoleColor.Green;
+            // successful payment method
             Console.WriteLine($"Your purchase for {total.ToString("C")} has been completed!");
             Console.ForegroundColor = ConsoleColor.White;
+            // display receipt and payment method
+            receipt.DisplayReceipt(this);
+            receiptForOrder.ReceiptDisplay();
         }
         // method to recursively ask for cc number if it is invalid
         public string AskForCCNumber()
@@ -53,19 +62,9 @@ namespace POS.Library
                     Console.WriteLine("Your credit card has expired");
                     return AskForExpDate();
                 }
-
             }
             return validExpDate.ToString("MMyy");
-
         }
-        // if input is invalid display error
-        // and call the method recursively
-        //if (!Validator.ValidExpDate(ExpirationDate))
-        //{
-        //    Console.WriteLine("Please enter a valid expiration date");
-        //    AskForExpDate();
-        //}
-
         // method to recursively ask for cvv number if it is invalid
         public string AskForCVV()
         {
@@ -74,7 +73,7 @@ namespace POS.Library
             CVV = Console.ReadLine();
             // if input is invalid display error
             // and call the method recursively
-            if (!Validator.ValidCVV(CVV))
+            if (!Validator.IsValidCVV(CVV))
             {
                 Console.WriteLine("Please enter a valid CVV (3 digit code at the end of the signature line");
                 AskForCVV();

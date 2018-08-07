@@ -35,30 +35,30 @@ namespace POS.Library
             }
         }
         // validate cvv on credit card example(123)
-        public bool ValidCVV(string cvv)
+        public bool IsValidCVV(string cvv)
         {
             var regx = new Regex(@"^[0-9]{3}$");
             return regx.IsMatch(cvv);
         }
         // validate check number example(1234)
-        public bool ValidCheckNumber(string checkNumber)
+        public bool IsValidCheckNumber(string checkNumber)
         {
             var regx = new Regex(@"^[0-9]{4}$");
             return regx.IsMatch(checkNumber);
         }
 
-        public bool VailidCashFormat(string payment)
+        public bool IsVailidCashFormat(string payment)
         {
             var regx = new Regex(@"^[0-9]+\.([0-9]{2})$");
             return regx.IsMatch(payment.ToString());
         }
-        public int ValidateUserInput(string input)
+        public int IsValidateUserInput(string input)
         {
             int userInput;
             if (String.IsNullOrEmpty(input))
             {
                 Console.WriteLine("That is not a valid input");
-                return ValidateUserInput(Console.ReadLine());
+                return IsValidateUserInput(Console.ReadLine());
             }
             bool success = int.TryParse(input, out userInput);
 
@@ -69,7 +69,7 @@ namespace POS.Library
             else
             {
                 Console.WriteLine("Please enter a valid option");
-                return ValidateUserInput(Console.ReadLine());
+                return IsValidateUserInput(Console.ReadLine());
             }
         }
     }
