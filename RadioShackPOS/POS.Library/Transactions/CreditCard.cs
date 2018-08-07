@@ -54,16 +54,18 @@ namespace POS.Library
             // ask for and store user input
             Console.Write("Please enter the expiration date (MM/YY): ");
             ExpirationDate = Console.ReadLine();
-            if (DateTime.TryParse(ExpirationDate, out DateTime validExpDate))
+            if (!Validator.ValidExpDate(ExpirationDate))
             {
-                //var expired = DateTime.Compare(validExpDate, DateTime.Now);
-                if (DateTime.Compare(validExpDate, DateTime.Now) < 0)
-                {
-                    Console.WriteLine("Your credit card has expired");
-                    return AskForExpDate();
-                }
+                Console.WriteLine("That is not a valid date");
+                AskForExpDate();
             }
-            return validExpDate.ToString("MMyy");
+
+            if (!Validator.PastDueDate(ExpirationDate))
+            {
+                Console.WriteLine("Your card has expired. Please enter a new date");
+                AskForExpDate();
+            }
+            return ExpirationDate;
         }
         // method to recursively ask for cvv number if it is invalid
         public string AskForCVV()
