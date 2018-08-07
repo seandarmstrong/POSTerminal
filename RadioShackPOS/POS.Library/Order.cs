@@ -60,7 +60,7 @@ namespace POS.Library
 
         public void ResetOrderList()
         {
-            var userOptions = new UserOptions();
+            var userOptions = new UserOption();
             Console.WriteLine("Would you like to reset the cart for another transaction? (y/n)");
             if (userOptions.ContinueAction(Console.ReadLine().ToLower().Trim()))
             {
@@ -123,7 +123,7 @@ namespace POS.Library
             float salesTax = .06f;
             Console.WriteLine("\n================================ RECEIPT =================================");
             Console.WriteLine("Thank you for shopping at Radio Shack! See you again soon!\n");
-            
+
             Console.WriteLine(RECEIPT_FORMAT, "Name", "Price", "Quantity", "Total");
             foreach (var product in orderList)
             {

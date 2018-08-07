@@ -41,7 +41,7 @@ namespace POS.Library
             CreditCardNumber = Console.ReadLine();
             // if input is invalid display error
             // and call the method recursively
-            if (!Validator.ValidCCNumber(CreditCardNumber))
+            if (!Validator.ValidateCCNumber(CreditCardNumber))
             {
                 Console.WriteLine("Please enter a valid credit card number");
                 AskForCCNumber();
@@ -54,13 +54,14 @@ namespace POS.Library
             // ask for and store user input
             Console.Write("Please enter the expiration date (MM/YY): ");
             ExpirationDate = Console.ReadLine();
-            if (!Validator.ValidExpDate(ExpirationDate))
+
+            if (!Validator.ValidateExpDate(ExpirationDate))
             {
                 Console.WriteLine("That is not a valid date");
                 AskForExpDate();
             }
 
-            if (!Validator.PastDueDate(ExpirationDate))
+            if (!Validator.CheckExpireDate(ExpirationDate))
             {
                 Console.WriteLine("Your card has expired. Please enter a new date");
                 AskForExpDate();
@@ -75,7 +76,11 @@ namespace POS.Library
             CVV = Console.ReadLine();
             // if input is invalid display error
             // and call the method recursively
+<<<<<<< HEAD
+            if (!Validator.ValidateCVV(CVV))
+=======
             if (!Validator.IsValidCVV(CVV))
+>>>>>>> master
             {
                 Console.WriteLine("Please enter a valid CVV (3 digit code at the end of the signature line");
                 AskForCVV();
