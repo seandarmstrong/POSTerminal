@@ -8,7 +8,7 @@ namespace POS.Library
 {
     public class ProductList
     {
-        // MIKE PATH .txt
+
         private readonly string mikePath = @"C:\Users\Mozzey\GrandCircus\Midterm\POSTerminal\RadioShackPOS\POS.Library\products.csv";
         readonly string seanPath = @"C:\Users\armst\Documents\Grand_Circus\POS_Terminal\POSTerminal\RadioShackPOS\POS.Library\products.csv";
         readonly string bradPath = @"C:\Users\frees\source\repos\POSTerminal\RadioShackPOS\POS.Library\products.csv";
@@ -17,6 +17,7 @@ namespace POS.Library
 
         }
 
+        //this function pulls the text file and parses the CSV to build the product list to return it
         public List<IProductModel> GetProducts()
         {
             List<IProductModel> productList = new List<IProductModel>();
@@ -44,6 +45,7 @@ namespace POS.Library
             return productList;
         }
 
+        //this function returns the list of the product list
         public int GetProductListCount()
         {
             var listOfProducts = this.GetProducts();

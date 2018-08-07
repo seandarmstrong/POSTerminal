@@ -19,11 +19,14 @@ namespace POS.Library
 
         public ProductList Catalog;
 
+        //constructor to set instance of ProductList
         public Order()
         {
             Catalog = new ProductList();
         }
 
+        //this function accepts the product selected by the user and the quantity, retrieves the selected product from the product list, and adds
+        //it to a new order list to be used throughout the order
         public List<OrderList> BuildOrderList(int userInput, int quantity)
         {
             var productIndex = userInput - 1;
@@ -40,11 +43,13 @@ namespace POS.Library
             return orderList;
         }
 
+        //this function returns the current count of the order list
         public int GetOrderListCount()
         {
             return orderList.Count;
         }
 
+        //this function displays the line total when the user adds a new product to the cart
         public void ShowLineTotal(int userInput, int quantity)
         {
             var productIndex = userInput - 1;
@@ -58,6 +63,7 @@ namespace POS.Library
             }
         }
 
+        //this function resets the order list and the subtotal of the cart to handle a new order
         public void ResetOrderList()
         {
             var userOptions = new UserOption();
@@ -69,6 +75,7 @@ namespace POS.Library
             }
         }
 
+        //this function displays the current objects of the order list
         public void ViewOrderCart()
         {
             _subTotal = 0f;
@@ -86,6 +93,7 @@ namespace POS.Library
             Console.ReadKey();
         }
 
+        //this function displays the shopping cart for checkout, including relevant information about the order
         public void CheckoutDisplay()
         {
             Console.WriteLine(CART_FORMAT, "Category", "Name", "Price", "Quantity", "Total", "Description");
@@ -102,6 +110,7 @@ namespace POS.Library
             Console.WriteLine(MONEY_FORMAT, "Grand Total:", _grandTotal.ToString("C"));
         }
 
+        //this function calculates the grand total and returns the value
         public float GetGrandTotal()
         {
             _subTotal = 0f;
@@ -109,13 +118,14 @@ namespace POS.Library
 
             foreach (var product in orderList)
             {
-                //Console.WriteLine(CART_FORMAT, product.Category, product.Name, product.Price.ToString("C"), product.GetQuantity(), product.GetTotal().ToString("C"), product.Description);
                 _subTotal = _subTotal + product.GetTotal();
             }
             _taxOnSale = _subTotal * _salesTax;
             _grandTotal = (float)Math.Round(_subTotal + _taxOnSale, 2);
             return _grandTotal;
         }
+
+        //this function displays the receipt to complete the order
         public void ReceiptDisplay()
 
         {
