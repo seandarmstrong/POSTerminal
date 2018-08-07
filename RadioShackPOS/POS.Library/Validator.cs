@@ -12,12 +12,14 @@ namespace POS.Library
             var regx = new Regex(@"^[0-9]{4}\s?[0-9]{4}\s?[0-9]{4}\s?[0-9]{4}$");
             return regx.IsMatch(ccNumber);
         }
+
         // validate cc expiration date example(MM/YY)
         public bool ValidateExpDate(string expDate)
         {
             var regx = new Regex(@"^[0-9]{2}/[0-9]{2}$");
             return regx.IsMatch(expDate);
         }
+
         // checks if the cc date is is before todays date.
         public bool CheckExpireDate(string expDate)
         {

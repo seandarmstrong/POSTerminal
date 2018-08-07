@@ -11,7 +11,7 @@ namespace RadioShackPOS
         {
             var menu = new Menu();
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Welcome to RadioShack - the best for cables and batteries since 1970");
+            Console.WriteLine("Welcome to RadioShack - the best place for cables and batteries since 1970");
             do
             {
                 menu.DisplayMainMenu();

@@ -10,11 +10,13 @@ namespace POS.Library
 
         public UserOption userOptions = new UserOption();
 
+        //this function sets the boolean variable to determine if the program continues or exits
         public bool IsRunning()
         {
             return running;
         }
 
+        //this function displays the main menu
         public void DisplayMainMenu()
         {
 
@@ -29,6 +31,7 @@ namespace POS.Library
             running = userOptions.GetMainMenuResponse();
         }
 
+        //this function uses an instance of the ProductList class and displays the product list for user selection
         public void DisplayProductMenu()
         {
             var productList = new ProductList();
@@ -47,6 +50,7 @@ namespace POS.Library
 
         }
 
+        //this function displays the payment options
         public void DisplayPayment()
         {
             var menu = String.Format("\n{0}\n{1}\n{2}\n{3}",
