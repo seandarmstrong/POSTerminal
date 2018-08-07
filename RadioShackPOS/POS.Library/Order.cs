@@ -97,6 +97,7 @@ namespace POS.Library
         public void ShowCheckoutDisplay()
         {
             Console.WriteLine(CART_FORMAT, "Category", "Name", "Price", "Quantity", "Total", "Description");
+            _subTotal = 0;
             foreach (var product in orderList)
             {
                 Console.WriteLine(CART_FORMAT, product.Category, product.Name, product.Price.ToString("C"), product.GetQuantity(), product.GetTotal().ToString("C"), product.Description);
