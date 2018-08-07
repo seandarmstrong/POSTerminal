@@ -31,7 +31,7 @@ namespace POS.Library
             Console.ForegroundColor = ConsoleColor.White;
             // display receipt and payment method
             receipt.DisplayReceipt(this);
-            receiptForOrder.ReceiptDisplay();
+            receiptForOrder.GetReceiptDisplay();
         }
         // method to recursively ask for cc number if it is invalid
         public string AskForCCNumber()

@@ -22,7 +22,7 @@ namespace POS.Library
             Console.WriteLine($"Your check #{ CheckNumber } has been processed!");
             Console.ForegroundColor = ConsoleColor.White;
             // display the receipt and payment method after valid payment completed
-            receiptForOrder.ReceiptDisplay();
+            receiptForOrder.GetReceiptDisplay();
             receipt.DisplayReceipt(this);
         }
 
