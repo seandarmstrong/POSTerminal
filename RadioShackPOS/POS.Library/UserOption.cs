@@ -5,14 +5,21 @@ namespace POS.Library
 {
     public class UserOption
     {
-        public Validator validate = new Validator();
-        public Order order = new Order();
+        public Validator Validate;
+        public Order Order;
+
+        //contructor
+        public UserOption()
+        {
+            Validate = new Validator();
+            Order = new Order();
+        }
 
         //this function accepts the users input from the main menu and branches the logic depending on the selection
         public bool GetMainMenuResponse()
         {
             Console.Write("Please select from the main menu: ");
-            int userInput = validate.ValidateUserInput(Console.ReadLine());
+            int userInput = Validate.ValidateUserInput(Console.ReadLine());
             switch (userInput)
             {
                 case (int)MainMenu.ProductList:
@@ -25,7 +32,7 @@ namespace POS.Library
                     HandleCheckout();
                     break;
                 case (int)MainMenu.EmptyCart:
-                    order.ResetOrderList();
+                    Order.ResetOrderList();
                     break;
                 case (int)MainMenu.Quit:
                     Console.WriteLine("Goodbye");
@@ -41,7 +48,7 @@ namespace POS.Library
         public void HandleAddProduct()
         {
             var menu = new Menu();
-            var listCount = order.Catalog.GetProductListCount();
+            var listCount = Order.Catalog.GetProductListCount();
             menu.DisplayProductMenu();
             do
             {
@@ -55,11 +62,11 @@ namespace POS.Library
                 else
                 {
                     Console.Write("Enter the product number that you would like to add to the order: ");
-                    var productNumber = validate.ValidateProductResponse(Console.ReadLine());
+                    var productNumber = Validate.ValidateProductResponse(Console.ReadLine());
                     Console.Write("Enter the number of this product you would like to add to order: ");
                     var quantity = GetProductQuantity(Console.ReadLine());
-                    order.BuildOrderList(productNumber, quantity);
-                    order.ShowLineTotal(productNumber, quantity);
+                    Order.BuildOrderList(productNumber, quantity);
+                    Order.ShowLineTotal(productNumber, quantity);
                     Console.Write("Would you like to add another product to the cart?(y/n): ");
                 }
             } while (ContinueAction(Console.ReadLine().Trim().ToLower()));
@@ -69,9 +76,9 @@ namespace POS.Library
         //this function calls the display of the showing cart and notifies the user if the cart is empty
         public void HandleViewCart()
         {
-            if (order.GetOrderListCount() > 0)
+            if (Order.GetOrderListCount() > 0)
             {
-                order.ViewOrderCart();
+                Order.ViewOrderCart();
             }
             else
             {
@@ -86,11 +93,11 @@ namespace POS.Library
         public void HandleCheckout()
         {
             var menu = new Menu();
-            if (order.GetOrderListCount() > 0)
+            if (Order.GetOrderListCount() > 0)
             {
-                order.ShowCheckoutDisplay();
+                Order.ShowCheckoutDisplay();
                 menu.DisplayPayment();
-                order.ResetOrderList();
+                Order.ResetOrderList();
             }
             else
             {
@@ -103,7 +110,7 @@ namespace POS.Library
         //this function gets the quantity desired and passed the amount back
         public int GetProductQuantity(string input)
         {
-            int quantity = validate.ValidateUserInput(input);
+            int quantity = Validate.ValidateUserInput(input);
             if (quantity > 0)
             {
                 return quantity;
@@ -143,7 +150,7 @@ namespace POS.Library
             var receiptForOrder = new Order();
             var order = new Order();
             var grandTotal = order.GetGrandTotal();
-            var userInput = validate.ValidateUserInput(Console.ReadLine());
+            var userInput = Validate.ValidateUserInput(Console.ReadLine());
             switch (userInput)
             {
                 case (int)PayOptions.Cash:
