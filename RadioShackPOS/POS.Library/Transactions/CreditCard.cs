@@ -76,11 +76,8 @@ namespace POS.Library
             CVV = Console.ReadLine();
             // if input is invalid display error
             // and call the method recursively
-<<<<<<< HEAD
+
             if (!Validator.ValidateCVV(CVV))
-=======
-            if (!Validator.IsValidCVV(CVV))
->>>>>>> master
             {
                 Console.WriteLine("Please enter a valid CVV (3 digit code at the end of the signature line");
                 AskForCVV();
