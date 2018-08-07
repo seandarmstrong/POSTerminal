@@ -4,7 +4,7 @@ namespace POS.Library
 {
     public class Check : ICheckModel
     {
-        
+        // PROPS
         public string CheckNumber { get; private set; }
 
         readonly Validator Validator = new Validator();
