@@ -45,17 +45,26 @@ namespace POS.Library
             // ask for and store user input
             Console.Write("Please enter the expiration date (MM/YY): ");
             ExpirationDate = Console.ReadLine();
-            if (DateTime.TryParse(ExpirationDate, out DateTime validExpDate))
+            /*if (DateTime.TryParse(ExpirationDate, out DateTime validExpDate))
             {
-                //var expired = DateTime.Compare(validExpDate, DateTime.Now);
-                if (DateTime.Compare(validExpDate, DateTime.Now) < 0)
-                {
-                    Console.WriteLine("Your credit card has expired");
-                    return AskForExpDate();
-                }
+            }*/
 
+            var dateParts = ExpirationDate.ToString().Split('/');
+            var year = int.Parse(dateParts[1]);
+            var month = int.Parse(dateParts[0]);
+            var lastDaysInMonth = DateTime.DaysInMonth(year, month);
+            var cardExpire = new DateTime(year, month, lastDaysInMonth, 23, 59, 59);
+            if (cardExpire > DateTime.Now)
+            {
+                return ExpirationDate;
             }
-            return validExpDate.ToString("MMyy");
+            else
+            {
+                Console.WriteLine("That credit card is expired. Please enter another date.");
+                return AskForExpDate();
+            }
+            
+            
 
         }
         // if input is invalid display error

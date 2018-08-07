@@ -23,7 +23,7 @@ namespace POS.Library
             string[] fields;
             try
             {
-                using (TextFieldParser parser = new TextFieldParser(mikePath))
+                using (TextFieldParser parser = new TextFieldParser(seanPath))
                 {
                     parser.TextFieldType = FieldType.Delimited;
                     parser.SetDelimiters(",");
