@@ -94,7 +94,7 @@ namespace POS.Library
         }
 
         //this function displays the shopping cart for checkout, including relevant information about the order
-        public void CheckoutDisplay()
+        public void ShowCheckoutDisplay()
         {
             Console.WriteLine(CART_FORMAT, "Category", "Name", "Price", "Quantity", "Total", "Description");
             foreach (var product in orderList)
@@ -126,7 +126,7 @@ namespace POS.Library
         }
 
         //this function displays the receipt to complete the order
-        public void ReceiptDisplay()
+        public void GetReceiptDisplay()
 
         {
             var subTotal = 0f;

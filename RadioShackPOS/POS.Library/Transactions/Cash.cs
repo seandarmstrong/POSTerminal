@@ -4,7 +4,7 @@ namespace POS.Library
 {
     public class Cash : ICashModel
     {
-        
+
         // PROPS
         public string Tender { get; private set; }
 
@@ -31,7 +31,7 @@ namespace POS.Library
                 Console.WriteLine($"Your change is ${Math.Round(Change, 2)}");
                 Console.ForegroundColor = ConsoleColor.White;
                 // display receipt and payment method
-                receiptForOrder.ReceiptDisplay();
+                receiptForOrder.GetReceiptDisplay();
                 receipt.DisplayReceipt(this);
             }
             else

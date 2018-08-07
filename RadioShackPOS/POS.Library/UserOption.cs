@@ -8,10 +8,10 @@ namespace POS.Library
         public Validator validate = new Validator();
         public Order order = new Order();
 
+        //this function accepts the users input from the main menu and branches the logic depending on the selection
         public bool GetMainMenuResponse()
         {
             Console.Write("Please select from the main menu: ");
-
             int userInput = validate.ValidateUserInput(Console.ReadLine());
             switch (userInput)
             {
@@ -37,6 +37,7 @@ namespace POS.Library
             return true;
         }
 
+        //this function handles the calling of the display of the product list and the selection of the products to add and pass to the order list
         public void HandleAddProduct()
         {
             var menu = new Menu();
@@ -65,6 +66,7 @@ namespace POS.Library
 
         }
 
+        //this function calls the display of the showing cart and notifies the user if the cart is empty
         public void HandleViewCart()
         {
             if (order.GetOrderListCount() > 0)
@@ -79,12 +81,14 @@ namespace POS.Library
             }
         }
 
+        //this function handles the display of the shopping cart for checkout and calls the methods for payment, receipt, and clearing the order list
+        //it also notifies the user if the cart is empty and checkout cannot occur
         public void HandleCheckout()
         {
             var menu = new Menu();
             if (order.GetOrderListCount() > 0)
             {
-                order.CheckoutDisplay();
+                order.ShowCheckoutDisplay();
                 menu.DisplayPayment();
                 order.ResetOrderList();
             }
@@ -96,6 +100,7 @@ namespace POS.Library
             }
         }
 
+        //this function gets the quantity desired and passed the amount back
         public int GetProductQuantity(string input)
         {
             int quantity = validate.ValidateUserInput(input);
@@ -111,6 +116,7 @@ namespace POS.Library
 
         }
 
+        //this function determines if the user wants to add another product or return back to the main menu
         public bool ContinueAction(string input)
         {
             if (input == "yes" || input == "y")
@@ -129,6 +135,8 @@ namespace POS.Library
                 }
             }
         }
+
+        //this function handles all of the payment options to finalize the transaction
         public void GetPaymentOptions()
         {
             var receipt = new Receipt();
