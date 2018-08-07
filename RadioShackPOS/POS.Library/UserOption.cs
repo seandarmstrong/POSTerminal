@@ -1,4 +1,5 @@
-﻿using System;
+﻿using POS.Library.Enums;
+using System;
 
 namespace POS.Library
 {
@@ -10,6 +11,7 @@ namespace POS.Library
         public bool GetMainMenuResponse()
         {
             Console.Write("Please select from the main menu: ");
+<<<<<<< HEAD:RadioShackPOS/POS.Library/UserOption.cs
             int userInput = validate.ValidateUserInput(Console.ReadLine());
             switch (userInput)
             {
@@ -21,11 +23,79 @@ namespace POS.Library
                     break;
                 case 3:
                     HandleCheckout();
+=======
+            int userInput = validate.IsValidateUserInput(Console.ReadLine());
+            var order = new Order();
+
+            var menu = new Menu();
+
+            var listCount = order.Catalog.GetProductListCount();
+
+            switch (userInput)
+            {
+                case (int)MainMenu.ProductList:
+                    menu.DisplayProductMenu();
+                    do
+                    {
+                        if (listCount <= 0)
+                        {
+                            Console.WriteLine("The file was not found at that location. Please call Technical Support @ 012-345-6789.");
+                            Console.ReadKey();
+                            return false;
+                        }
+                        else
+                        {
+                            Console.Write("Enter the product number that you would like to add to the order: ");
+                            var productNumber = GetProductResponse(Console.ReadLine());
+                            Console.Write("Enter the number of this product you would like to add to order: ");
+                            var quantity = GetProductQuantity(Console.ReadLine());
+                            order.BuildOrderList(productNumber, quantity);
+                            order.ShowLineTotal(productNumber, quantity);
+                            Console.Write("Would you like to add another product to the cart?(y/n): ");
+                        }
+                    } while (ContinueAction(Console.ReadLine().Trim().ToLower()));
+
                     break;
-                case 4:
+
+                case (int)MainMenu.ShowCart:
+
+                    if (order.GetOrderListCount() > 0)
+                    {
+                        order.ViewOrderCart();
+                    }
+                    else
+                    {
+                        Console.WriteLine("There doesn't appear to anything in the cart. Please add products to view cart.");
+                        Console.WriteLine("Press any key to continue...");
+                        Console.ReadKey();
+                    }
+
+                    break;
+
+                case (int)MainMenu.Checkout:
+                    if (order.GetOrderListCount() > 0)
+                    {
+                        order.CheckoutDisplay();
+                        menu.DisplayPayment();
+                        order.ResetOrderList();
+                    }
+                    else
+                    {
+                        Console.WriteLine("There doesn't appear to anything in the cart. Please add products to checkout.");
+                        Console.WriteLine("Press any key to continue...");
+                        Console.ReadKey();
+                    }
+
+>>>>>>> master:RadioShackPOS/POS.Library/UserOptions.cs
+                    break;
+                case (int)MainMenu.EmptyCart:
                     order.ResetOrderList();
                     break;
+<<<<<<< HEAD:RadioShackPOS/POS.Library/UserOption.cs
                 case 5:
+=======
+                case (int)MainMenu.Quit:
+>>>>>>> master:RadioShackPOS/POS.Library/UserOptions.cs
                     Console.WriteLine("Goodbye");
                     return false;
                 default:
@@ -37,6 +107,7 @@ namespace POS.Library
 
         public void HandleAddProduct()
         {
+<<<<<<< HEAD:RadioShackPOS/POS.Library/UserOption.cs
             var menu = new Menu();
             var listCount = order.Catalog.GetProductListCount();
             menu.DisplayProductMenu();
@@ -81,6 +152,11 @@ namespace POS.Library
         {
             var menu = new Menu();
             if (order.GetOrderListCount() > 0)
+=======
+            var product = new ProductList();
+            var selection = validate.IsValidateUserInput(input);
+            if (selection > 0 && selection <= product.GetProductListCount())
+>>>>>>> master:RadioShackPOS/POS.Library/UserOptions.cs
             {
                 order.CheckoutDisplay();
                 menu.DisplayPayment();
@@ -96,7 +172,7 @@ namespace POS.Library
 
         public int GetProductQuantity(string input)
         {
-            int quantity = validate.ValidateUserInput(input);
+            int quantity = validate.IsValidateUserInput(input);
             if (quantity > 0)
             {
                 return quantity;
@@ -133,26 +209,25 @@ namespace POS.Library
             var receiptForOrder = new Order();
             var order = new Order();
             var grandTotal = order.GetGrandTotal();
-            var userInput = validate.ValidateUserInput(Console.ReadLine());
+            var userInput = validate.IsValidateUserInput(Console.ReadLine());
             switch (userInput)
             {
-                case 1:
+                case (int)PayOptions.Cash:
                     var cash = new Cash();
                     cash.Transaction(grandTotal);
+<<<<<<< HEAD:RadioShackPOS/POS.Library/UserOption.cs
                     receipt.DisplayReceipt(cash);
                     //receiptForOrder.ReceiptDisplay();
+=======
+>>>>>>> master:RadioShackPOS/POS.Library/UserOptions.cs
                     break;
-                case 2:
+                case (int)PayOptions.Check:
                     var check = new Check();
                     check.Transaction(grandTotal);
-                    receipt.DisplayReceipt(check);
-                    receiptForOrder.ReceiptDisplay();
                     break;
-                case 3:
+                case (int)PayOptions.CreditCard:
                     var cc = new CreditCard();
                     cc.Transaction(grandTotal);
-                    receipt.DisplayReceipt(cc);
-                    receiptForOrder.ReceiptDisplay();
                     break;
                 default:
                     Console.WriteLine("Sorry but that is not a payment option.");

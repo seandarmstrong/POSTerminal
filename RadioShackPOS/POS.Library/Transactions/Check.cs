@@ -7,20 +7,23 @@ namespace POS.Library
         
         public string CheckNumber { get; private set; }
 
-        Validator Validator = new Validator();
+        readonly Validator Validator = new Validator();
         // ctor
-        public Check()
-        {
-        }
-
+        public Check() { }
+        // main check transaction method
         public void Transaction(float total)
         {
+            var receipt = new Receipt();
+            var receiptForOrder = new Order();
             // prompt  user for check number
             GetCheckNumber();
             // fancy pants success color and message
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Your check #{ CheckNumber } has been processed!");
             Console.ForegroundColor = ConsoleColor.White;
+            // display the receipt and payment method after valid payment completed
+            receiptForOrder.ReceiptDisplay();
+            receipt.DisplayReceipt(this);
         }
 
         public string GetCheckNumber()
@@ -29,7 +32,11 @@ namespace POS.Library
             Console.WriteLine("Please enter a check number (0000): ");
             CheckNumber = Console.ReadLine();
             // validate user input
+<<<<<<< HEAD
             if (!Validator.ValidateCheckNumber(CheckNumber))
+=======
+            if (!Validator.IsValidCheckNumber(CheckNumber))
+>>>>>>> master
             {
                 // call the method recursively if user input is invalid
                 Console.WriteLine("Please enter a valid check number in the form of 4 numbers (1234)");
