@@ -5,7 +5,7 @@ namespace POS.Library
     public interface ICashModel : ITransactionModel
     {
         // Signatures
-        float Tender { get; }
+        string Tender { get; }
         float Change { get; }
         // Methods
         //string MakeChange(float total);

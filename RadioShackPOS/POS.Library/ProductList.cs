@@ -24,7 +24,6 @@ namespace POS.Library
             try
             {
                 using (TextFieldParser parser = new TextFieldParser(seanPath))
-
                 {
                     parser.TextFieldType = FieldType.Delimited;
                     parser.SetDelimiters(",");

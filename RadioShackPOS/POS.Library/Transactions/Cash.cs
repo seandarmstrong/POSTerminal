@@ -6,7 +6,7 @@ namespace POS.Library
     {
         
         // PROPS
-        public float Tender => 0;
+        public string Tender { get; private set; }
 
         public float Change { get; private set; }
         // ctor
@@ -18,14 +18,14 @@ namespace POS.Library
             // ask for and store user input
             Console.Write("Please enter a dollar amount('100.00'): ");
             //var tender = Math.Round(float.Parse(Console.ReadLine()), 2);
-            var tender = Console.ReadLine();
+            Tender = Console.ReadLine();
             // validate user input to be in the form of 0.00 
             // the last two decimal places matter the most
-            if (float.TryParse(tender, out float Tender) && Tender >= total)
+            if (float.TryParse(Tender, out float tender) && tender >= total)
             {
                 var receipt = new Receipt();
                 var receiptForOrder = new Order();
-                Change = Tender - total;
+                Change = tender - total;
                 // display the users change
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"Your change is ${Math.Round(Change, 2)}");
