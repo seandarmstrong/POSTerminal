@@ -8,7 +8,7 @@ namespace POS.Library
 
         private static bool running = true;
 
-        public UserOptions userOptions = new UserOptions();
+        public UserOption userOptions = new UserOption();
 
         public bool IsRunning()
         {
@@ -44,7 +44,7 @@ namespace POS.Library
                         item.Price.ToString("C"), item.Description);
                 }
             }
-            
+
         }
 
         public void DisplayPayment()

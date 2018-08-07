@@ -32,7 +32,7 @@ namespace POS.Library
             CreditCardNumber = Console.ReadLine();
             // if input is invalid display error
             // and call the method recursively
-            if (!Validator.ValidCCNumber(CreditCardNumber))
+            if (!Validator.ValidateCCNumber(CreditCardNumber))
             {
                 Console.WriteLine("Please enter a valid credit card number");
                 AskForCCNumber();
@@ -45,36 +45,14 @@ namespace POS.Library
             // ask for and store user input
             Console.Write("Please enter the expiration date (MM/YY): ");
             ExpirationDate = Console.ReadLine();
-<<<<<<< HEAD
-            /*if (DateTime.TryParse(ExpirationDate, out DateTime validExpDate))
-            {
-            }*/
 
-            var dateParts = ExpirationDate.ToString().Split('/');
-            var year = int.Parse(dateParts[1]);
-            var month = int.Parse(dateParts[0]);
-            var lastDaysInMonth = DateTime.DaysInMonth(year, month);
-            var cardExpire = new DateTime(year, month, lastDaysInMonth, 23, 59, 59);
-            if (cardExpire > DateTime.Now)
-            {
-                return ExpirationDate;
-            }
-            else
-            {
-                Console.WriteLine("That credit card is expired. Please enter another date.");
-                return AskForExpDate();
-            }
-            
-            
-=======
-            if (!Validator.ValidExpDate(ExpirationDate))
+            if (!Validator.ValidateExpDate(ExpirationDate))
             {
                 Console.WriteLine("That is not a valid date");
                 AskForExpDate();
             }
->>>>>>> b1652f03b269c310dd2b4004c3b9c55ade73947b
 
-            if (!Validator.PastDueDate(ExpirationDate))
+            if (!Validator.CheckExpireDate(ExpirationDate))
             {
                 Console.WriteLine("Your card has expired. Please enter a new date");
                 AskForExpDate();
@@ -97,7 +75,7 @@ namespace POS.Library
             CVV = Console.ReadLine();
             // if input is invalid display error
             // and call the method recursively
-            if (!Validator.ValidCVV(CVV))
+            if (!Validator.ValidateCVV(CVV))
             {
                 Console.WriteLine("Please enter a valid CVV (3 digit code at the end of the signature line");
                 AskForCVV();

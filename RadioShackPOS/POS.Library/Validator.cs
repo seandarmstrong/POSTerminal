@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using System.Globalization;
 
 
 namespace POS.Library
@@ -8,19 +7,19 @@ namespace POS.Library
     public class Validator
     {
         // validate credit card #'s example(1234123412341234 or 1234 1234 1234 1234)
-        public bool ValidCCNumber(string ccNumber)
+        public bool ValidateCCNumber(string ccNumber)
         {
             var regx = new Regex(@"^[0-9]{4}\s?[0-9]{4}\s?[0-9]{4}\s?[0-9]{4}$");
             return regx.IsMatch(ccNumber);
         }
         // validate cc expiration date example(MM/YY)
-        public bool ValidExpDate(string expDate)
+        public bool ValidateExpDate(string expDate)
         {
             var regx = new Regex(@"^[0-9]{2}/[0-9]{2}$");
             return regx.IsMatch(expDate);
         }
         // checks if the cc date is is before todays date.
-        public bool PastDueDate(string expDate)
+        public bool CheckExpireDate(string expDate)
         {
             string[] temp = expDate.Split('/');
             string sMM = temp[0];
@@ -28,9 +27,9 @@ namespace POS.Library
             int iMM = int.Parse(sMM);
             int iYY = int.Parse(sYY);
 
-            DateTime expirationDate = new DateTime(iYY,iMM,01).AddMonths(1).AddDays(-1).AddYears(2000);
+            DateTime expirationDate = new DateTime(iYY, iMM, 01).AddMonths(1).AddDays(-1).AddYears(2000);
             var expired = DateTime.Compare(expirationDate, DateTime.Now);
-            if(expired < 0)
+            if (expired < 0)
             {
                 return false;
             }
@@ -40,23 +39,24 @@ namespace POS.Library
             }
         }
         // validate cvv on credit card example(123)
-        public bool ValidCVV(string cvv)
+        public bool ValidateCVV(string cvv)
         {
             var regx = new Regex(@"^[0-9]{3}$");
             return regx.IsMatch(cvv);
         }
         // validate check number example(1234)
-        public bool ValidCheckNumber(string checkNumber)
+        public bool ValidateCheckNumber(string checkNumber)
         {
             var regx = new Regex(@"^[0-9]{4}$");
             return regx.IsMatch(checkNumber);
         }
 
-        public bool VailidCashFormat(string payment)
+        public bool ValidateCashFormat(string payment)
         {
             var regx = new Regex(@"^[0-9]+\.([0-9]{2})$");
             return regx.IsMatch(payment.ToString());
         }
+
         public int ValidateUserInput(string input)
         {
             int userInput;
@@ -75,6 +75,21 @@ namespace POS.Library
             {
                 Console.WriteLine("Please enter a valid option");
                 return ValidateUserInput(Console.ReadLine());
+            }
+        }
+
+        public int ValidateProductResponse(string input)
+        {
+            var product = new ProductList();
+            var selection = ValidateUserInput(input);
+            if (selection > 0 && selection <= product.GetProductListCount())
+            {
+                return selection;
+            }
+            else
+            {
+                Console.Write("That product number does not exist. Please try again:");
+                return ValidateProductResponse(Console.ReadLine());
             }
         }
     }

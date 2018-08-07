@@ -62,7 +62,7 @@
     <Compile Include="Interfaces\ICheckModel.cs" />
     <Compile Include="Interfaces\ICreditCardModel.cs" />
     <Compile Include="Interfaces\ITransactionModel.cs" />
-    <Compile Include="UserOptions.cs" />
+    <Compile Include="UserOption.cs" />
     <Compile Include="Validator.cs" />
   </ItemGroup>
   <ItemGroup />
