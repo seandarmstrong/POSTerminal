@@ -32,11 +32,8 @@ namespace POS.Library
             Console.WriteLine("Please enter a check number (0000): ");
             CheckNumber = Console.ReadLine();
             // validate user input
-<<<<<<< HEAD
+
             if (!Validator.ValidateCheckNumber(CheckNumber))
-=======
-            if (!Validator.IsValidCheckNumber(CheckNumber))
->>>>>>> master
             {
                 // call the method recursively if user input is invalid
                 Console.WriteLine("Please enter a valid check number in the form of 4 numbers (1234)");
