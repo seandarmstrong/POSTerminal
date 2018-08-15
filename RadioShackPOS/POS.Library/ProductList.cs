@@ -19,9 +19,11 @@ namespace POS.Library
         {
             List<IProductModel> productList = new List<IProductModel>();
             string[] fields;
+            var executingPath = Directory.GetCurrentDirectory();
+            var filePath = Path.Combine(executingPath, "Content", "products.csv");
             try
             {
-                using (TextFieldParser parser = new TextFieldParser(@"C:\Users\armst\Documents\Grand_Circus\POS_Terminal\POSTerminal\RadioShackPOS\POS.Library\products.csv"))
+                using (TextFieldParser parser = new TextFieldParser(filePath))
                 {
                     parser.TextFieldType = FieldType.Delimited;
                     parser.SetDelimiters(",");
